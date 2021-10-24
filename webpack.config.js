@@ -1,4 +1,6 @@
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
     mode: 'production',
     entry: { // 配置入口处
@@ -28,5 +30,11 @@ module.exports = {
                 // 5、整个意思代表在文末匹配.ts或.tsx使用'awesome-typescrit-loader'进行解析
             }
         ]
-    }
+    },
+    plugins: [ //插件
+        new HtmlWebpackPlugin({  //使用Html-webpack-plugin插件使根目录下的index.html变为weback的首页，并且自动引入入口文件（js、tsx）
+            title: 'frankUI', //见index.html中title处
+            template: 'index.html'
+        })
+    ],
 }
