@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+      "outDir": "dist", //将编译出来的d.ts文件放到dist目录下
       "declaration": true,
       "baseUrl": ".",
       "module": "esnext",

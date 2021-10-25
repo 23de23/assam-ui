@@ -1,8 +1,6 @@
 const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    mode: 'development',
     entry: { // 配置入口处
         index: './lib/index.tsx'
     },
@@ -33,25 +31,5 @@ module.exports = {
                 // 5、整个意思代表在文末匹配.ts或.tsx使用'awesome-typescrit-loader'进行解析
             }
         ]
-    },
-    plugins: [ //插件
-        new HtmlWebpackPlugin({  //使用Html-webpack-plugin插件使根目录下的index.html变为weback的首页，并且自动引入入口文件（js、tsx）
-            title: 'frankUI', //见index.html中title处
-            template: 'index.html'
-        })
-    ],
-    externals: {  //外部引用。不将react打包到项目内，因为ui包一定是会有react才下载ui包
-        react: {
-            commonjs: 'react', //对应的引入方式node
-            commonjs2: 'react',
-            amd: 'react',
-            root: 'React' //script引入 window.React = .....
-        },
-        'react-dom': {
-            commonjs: 'react',
-            commonjs2: 'react',
-            amd: 'react',
-            root: 'React'
-        }
     }
 }
