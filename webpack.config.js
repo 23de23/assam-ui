@@ -2,13 +2,16 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    mode: 'production',
+    mode: 'development',
     entry: { // 配置入口处
         index: './lib/index.tsx'
     },
+    resolve: { //支持文件
+        extensions: ['.ts', '.tsx', '.js', '.jsx']
+    },
     output: { //出口
         // path:'./dist', 此写法错误在window与mac或者linux上文件路径并不都是/
-        path: path.resolve(__dirname,'dist/lib'),
+        path: path.resolve(__dirname, 'dist/lib'),
         // 1、__dirname 代表最外层文件及frankUI
         // 2、path.resolve语法为连接文件
         library: 'frankUI', //库名
@@ -19,7 +22,7 @@ module.exports = {
         // 4、因为amd只在浏览器使用、commonJS在nodeJS使用，因此最后出现了umd统一兼容两种版本，核心原理为if（define）else（module）既使if判断有define使用amd有module使用commonJS最后使用script引入
     },
     module: { //模块配置
-        rules:[ //规则
+        rules: [ //规则
             {
                 test: /\.tsx?$/,
                 loader: 'awesome-typescript-loader'
@@ -37,4 +40,18 @@ module.exports = {
             template: 'index.html'
         })
     ],
+    externals: {  //外部引用。不将react打包到项目内，因为ui包一定是会有react才下载ui包
+        react: {
+            commonjs: 'react', //对应的引入方式node
+            commonjs2: 'react',
+            amd: 'react',
+            root: 'React' //script引入 window.React = .....
+        },
+        'react-dom': {
+            commonjs: 'react',
+            commonjs2: 'react',
+            amd: 'react',
+            root: 'React'
+        }
+    }
 }
