@@ -29,6 +29,10 @@ module.exports = {
                 // 3、'?'代表最后一位X无论有没有都去匹配，因此匹配ts与tsx文件
                 // 4、'$'代表该正则表达式仅匹配末尾处，因此中途出现ts不进行匹配
                 // 5、整个意思代表在文末匹配.ts或.tsx使用'awesome-typescrit-loader'进行解析
+            },
+            {
+                test: /\.svg$/,
+                loader: 'svg-sprite-loader'
             }
         ]
     }
