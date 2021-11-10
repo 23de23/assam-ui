@@ -1,7 +1,7 @@
 import React from "react";
 import './importIcon.js'
 import './icon.scss'
-import classes from './classes'
+import classes from './helpers/classes'
 
 //TS的接口设置
 interface IconProps extends React.SVGAttributes<SVGElement> { 
