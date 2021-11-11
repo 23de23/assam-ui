@@ -1,6 +1,6 @@
 import * as renderer from 'react-test-renderer'
 import React from 'react'
-import Icon from '../icon.tsx'
+import Icon from '../icon'
 
 describe('icon',()=>{
   it('xxx',()=>{
