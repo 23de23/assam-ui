@@ -13,6 +13,7 @@ module.exports = {
       },
     },
     moduleNameMapper: {
+      // mocks 在测试中对于图片、css对测试无效。替换文件
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test/__mocks__/file-mock.js",
       "\\.(css|less|sass|scss)$": "<rootDir>/test/__mocks__/object-mock.js",
     },
