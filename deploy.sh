@@ -4,6 +4,7 @@ npm version $1 && \
   git push
 # $1 = arguments[0]
 # \换行 但是是一行语句执行
+# &&同js强断语句
 # major 大版本
 # minor 小版本
 # patch 补丁
