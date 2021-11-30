@@ -28,6 +28,7 @@
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.16.0",
     "@types/jest": "^24.0.9",
     "@types/react": "^16.8.7",
     "@types/react-dom": "^16.8.2",
@@ -55,7 +56,6 @@
     "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
-    "@babel/preset-typescript": "^7.16.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-router-dom": "^5.0.0"
