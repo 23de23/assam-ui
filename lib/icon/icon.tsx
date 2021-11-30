@@ -13,7 +13,7 @@ interface IconProps extends React.SVGAttributes<SVGElement> {
 const  Icon: React.FunctionComponent<IconProps> = (props) => {
     const {className,name,...restProps} = props
     return (
-        <svg className={classes('fui-icon',className)} {...restProps}>
+        <svg className={classes('assam',className)} {...restProps}>
             <use xlinkHref={`#${name}`}/>
         </svg>
     )
@@ -22,4 +22,4 @@ const  Icon: React.FunctionComponent<IconProps> = (props) => {
 export default Icon
 
 // 隐藏bug 
-// 1、当使用组件时传入className = "qq"时 {...props}会对其进行注册而挤掉fui-icon
+// 1、当使用组件时传入className = "qq"时 {...props}会对其进行注册而挤掉assam

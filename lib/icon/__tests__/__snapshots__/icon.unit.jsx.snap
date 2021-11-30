@@ -2,7 +2,7 @@
 
 exports[`icon render successfully 1`] = `
 <svg
-  className="fui-icon"
+  className="assam"
 >
   <use
     xlinkHref="#alipay"
