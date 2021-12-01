@@ -1,10 +1,16 @@
-import React, { useState } from "react"
+import React, { Fragment, useState } from "react"
 
-import {Dialog,alert} from "./dialog"
+import Dialog,{alert,confirm, modal} from "./dialog"
 
 export default function(){
   const [X, setX] = useState(false)
   const [Y, setY] = useState(false)
+
+  const openModal = () => {
+    const close =  modal(<Fragment>
+        <div>12312312312313<button onClick={() => {close()}}>123</button></div>
+      </Fragment>)
+  }
   return (
     <div>
       <div>
@@ -31,7 +37,9 @@ export default function(){
       </div>
       <div>
         <h1>example3</h1>
-        <button onClick={()=>{alert("这是一个alert测试")}}>1</button>
+        <button onClick={()=>{alert("这是一个alert测试")}}>alert</button>
+        <button onClick={()=>{confirm("是否确认这个通知",()=>{console.log('成功')}, () => {console.log('失败')})}}>confirm</button>
+        <button onClick={openModal}>modal</button>
       </div>
     </div>
     

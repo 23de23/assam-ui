@@ -1,4 +1,4 @@
-import React, { Fragment, ReactElement } from "react"
+import React, {Fragment, ReactElement, ReactNode } from "react"
 
 
 import { Icon } from "../index"
@@ -24,6 +24,7 @@ const Dialog: React.FunctionComponent<dialogProps> = (props) => {
   const { visible,children,footer,onClose,closeOnClickMask } = props
 
   const onClickClose: React.MouseEventHandler = (e)=>{
+    console.log('mask点击关闭')
     onClose(e)
   }
   const onClickMask:React.MouseEventHandler = (e)=>{
@@ -46,9 +47,11 @@ const Dialog: React.FunctionComponent<dialogProps> = (props) => {
         <main className={sc('main')}>
           {children}
         </main>
-        <footer className={sc('footer')}>
-          {footer && footer.map((item,index)=>React.cloneElement(item,{key:index}))}
-        </footer>
+        {footer && footer.length>0 &&
+          <footer className={sc('footer')}>
+            {footer && footer.map((item,index)=>React.cloneElement(item,{key:index}))}
+          </footer>
+        }
       </div>
     </Fragment>:
     null
@@ -57,19 +60,53 @@ const Dialog: React.FunctionComponent<dialogProps> = (props) => {
   )
 }
 
-const alert = (content:string)=>{
-  const component = <Dialog visible={true} onClose={()=>{
+const modal = (content:ReactNode,footer?:Array<React.ReactElement>,afterClose?:()=>void) => {
+  const close = () => {
     ReactDOM.render(React.cloneElement(component,{visible:false}),div)
     ReactDOM.unmountComponentAtNode(div)
     div.remove()
-  }}>{content}</Dialog>
+  }
+  const component = 
+    <Dialog 
+      visible={true}
+      footer={footer} 
+      onClose={()=>{
+        close()
+        afterClose && afterClose()
+      }}>
+      {content}
+    </Dialog>
   const div = document.createElement('div')
   document.body.append(div)
   ReactDOM.render(component,div)
+  return close
 }
+
+const alert = (content:string)=>{
+  const footer = [<button onClick={()=>{close()}}>确定</button>]
+  const close = modal(content,footer)
+}
+
+const confirm = (content:string, yes?:() => void, no?:() => void)=>{
+  const onYes = () => {
+    close()
+    yes && yes()
+  }
+  const onNo = () => {
+    close()
+    no && no()
+  }
+  const  footer = [
+     <button onClick={onYes}>确认</button>,
+     <button onClick={onNo}>取消</button>
+  ]
+  const close = modal(content,footer,no)
+}
+
 
 Dialog.defaultProps = {
   closeOnClickMask : true
 }
 
-export {Dialog,alert}
+export {alert,confirm,modal}
+export default Dialog
