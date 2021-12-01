@@ -14,3 +14,4 @@
 //     ,document.getElementById('root'))
 
 export {default as Icon} from './icon/icon' //引入并且导出
+import './index.scss'
