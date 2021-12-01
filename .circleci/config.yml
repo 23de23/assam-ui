@@ -71,5 +71,7 @@ workflows:
             - build
             # 过滤没有版本号提升的push
           filters:
+            tags:
+              only: /v[0-9]+(\.[0-9]+)*(-.*)*/
             branches:
-              only: /deploy/
+              ignore:/.*/ 
