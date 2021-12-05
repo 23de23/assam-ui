@@ -1,6 +1,6 @@
 import React from "react";
 
-import {scopedClassMaker} from '../classes'
+import {scopedClassMaker} from '../helpers/classes'
 
 const sc = scopedClassMaker('assam-layout')
 

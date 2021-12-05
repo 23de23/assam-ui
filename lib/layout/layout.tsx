@@ -1,7 +1,7 @@
 import React, { ReactElement } from "react";
 
 import Sider from './sider'
-import {scopedClassMaker} from '../classes'
+import {scopedClassMaker} from '../helpers/classes'
 import './layout.scss'
 
 const sc = scopedClassMaker('assam-layout')
