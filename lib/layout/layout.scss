@@ -1,17 +1,14 @@
 .assam-layout{
-  height: 500px;
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
   &.hasSider{
     flex-direction: row;
-    & {
+    .assam-layout {
       flex-direction: column;
     }
   }
   &-content{
     flex-grow: 1;
-    border: 1px solid green;
   }
   & &{
     display: flex;

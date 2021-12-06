@@ -5,43 +5,45 @@ import Header from "./header";
 import Layout from "./layout";
 import Sider from "./sider";
 
+import './layout.example.scss'
+
 const  LayoutExample = () => {
   return(
     <div>
       <h1>layout第一个案例</h1>
-      <Layout>
-        <Header></Header>
-        <Content></Content>
-        <Footer></Footer>
+      <Layout style={{height:500,width:500}}>
+        <Header className='example-header'>Header</Header>
+        <Content className='example-content'>Content</Content>
+        <Footer className='example-footer'>Footer</Footer>
       </Layout>
 
       <h1>layout第二个案例</h1>
-      <Layout>
-        <Header></Header>
+      <Layout style={{height:500,width:500}}>
+        <Header className='example-header'>Header</Header>
         <Layout>
-          <Sider></Sider>
-          <Content></Content>
+          <Sider className='example-sider'>Sider</Sider>
+          <Content className='example-content'>Content</Content>
         </Layout>
-        <Footer></Footer>
+        <Footer className='example-footer'>Footer</Footer>
       </Layout>
 
       <h1>layout第三个案例</h1>
-      <Layout>
-        <Header></Header>
+      <Layout style={{height:500,width:500}}>
+        <Header className='example-header'>Header</Header>
         <Layout>
-          <Content></Content>
-          <Sider></Sider>
+          <Content className='example-content'>Content</Content>
+          <Sider className='example-sider'>Sider</Sider>
         </Layout>
-        <Footer></Footer>
+        <Footer className='example-footer'>Footer</Footer>
       </Layout>
 
       <h1>layout第四个案例</h1>
-      <Layout>
-        <Sider></Sider>
+      <Layout style={{height:500,width:500}}>
+        <Sider className='example-sider'>Sider</Sider>
         <Layout>
-          <Header></Header>
-          <Content></Content>
-          <Footer></Footer>
+          <Header className='example-header'>Header</Header>
+          <Content className='example-content'>Content</Content>
+          <Footer className='example-footer'>Footer</Footer>
         </Layout>
       </Layout>
     </div>
