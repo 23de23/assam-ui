@@ -49,7 +49,13 @@ module.exports = {
                 // 2、先sass-loader将scss文件通过字符串形式在内存中转为css形式语法，在通过css-loader将字符串转为对象，最后style-loader将对象转为<style>加载到页面中。
                 // 3、js如何将style对象变为style标签 => document.createElement('style')  innerHtml = 'css对象'  document.head.appchild(style)
 
-            }
+            },
+            {
+                test: /\.(png|jpg|jpeg|gif)$/,
+                use: [
+                  'file-loader'
+                ]
+              }
         ]
     }
 }
