@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {HashRouter as Router,Link,Route} from 'react-router-dom'
+import {HashRouter as Router,NavLink,Route} from 'react-router-dom'
 
-import IconExample from './lib/icon/icon.Example'
+import IconCodeVisible from './lib/icon/icon.codeVisible'
 import DialogExample from './lib/dialog/dialog.Example'
 import ButtonExample from './lib/button/button.example'
 import LayoutExample from './lib/layout/layout.example'
@@ -29,21 +29,21 @@ ReactDOM.render((
                     <h2>组件</h2>
                     <ul>
                         <li>
-                            <Link to='/icon'>Icon</Link>
+                            <NavLink to='/icon'>Icon</NavLink>
                         </li>
                         <li>
-                            <Link to='/button'>Button</Link>
+                            <NavLink to='/button'>Button</NavLink>
                         </li>
                         <li>
-                            <Link to='/dialog'>Dialog</Link>
+                            <NavLink to='/dialog'>Dialog</NavLink>
                         </li>
                         <li>
-                            <Link to='/layout'>Layout</Link>
+                            <NavLink to='/layout'>Layout</NavLink>
                         </li>
                     </ul>
                 </Sider>
                 <Content className='global-content'>
-					<Route path="/icon" component={IconExample}/>
+					<Route path="/icon" component={IconCodeVisible}/>
 					<Route path="/button" component={ButtonExample}/>
 					<Route path="/dialog" component={DialogExample}/>
 					<Route path="/Layout" component={LayoutExample}/>

@@ -54,7 +54,7 @@ body {
                 }
                 &.active{
                     color: white;
-                    background: $main-color;
+                    background: desaturate($main-color, 20%);
                 }
             }
         }
