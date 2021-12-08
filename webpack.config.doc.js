@@ -10,7 +10,7 @@ module.exports =Object.assign({},base,{
         example: './example.tsx'
     },
     output: { //出口
-        path: path.resolve(__dirname, 'doc/lib'),
+        path: path.resolve(__dirname, 'doc'),
     },
     plugins: [ //插件
         new HtmlWebpackPlugin({  //使用Html-webpack-plugin插件使根目录下的index.html变为weback的首页，并且自动引入入口文件（js、tsx）
