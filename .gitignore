@@ -1,6 +1,7 @@
 # dist内文件都不上传
 /dist/*
 /test-results/
+/doc/
 
 
 # Logs

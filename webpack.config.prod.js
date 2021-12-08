@@ -11,10 +11,10 @@ module.exports =Object.assign({},base,{
             root: 'React' //script引入 window.React = .....
         },
         'react-dom': {
-            commonjs: 'react',
-            commonjs2: 'react',
-            amd: 'react',
-            root: 'React'
+            commonjs: 'React',
+            commonjs2: 'React',
+            amd: 'React',
+            root: 'ReactDOM'
         }
     }
 })

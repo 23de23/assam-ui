@@ -12,7 +12,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist/lib'),
         // 1、__dirname 代表最外层文件及frankUI
         // 2、path.resolve语法为连接文件
-        library: 'frankUI', //库名
+        library: 'assamUI', //库名
         libraryTarget: 'umd' //模块版本 umd|commonjs|amd
         // 1、最早期使用<script src=1.js>引入js文件，这样会使变量冲突
         // 2、然后出现了amd（a:异步，m:模块,d:定义）,基本语法为define（function（）{var a = 1}）这样使变量都在函数内生效。
