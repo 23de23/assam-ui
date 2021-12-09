@@ -3,7 +3,7 @@ import React, { Fragment, useState } from "react"
 import Form, { anyObject } from "./form"
 
 const FormExample:React.FunctionComponent = () => {
-  const [formData, serFormData] = useState({
+  const [formData, serFormData] = useState<anyObject>({
     username:'',
     password:''
   })
@@ -25,7 +25,7 @@ const FormExample:React.FunctionComponent = () => {
                 <button>返回</button>
               </Fragment>
             }
-            onChange={(newFormData:anyObject)=>serFormData(newFormData)}
+            onChange={(newForm)=>serFormData(newForm)}
             onSubmit={onSubmit}
       ></Form>
     </div>
