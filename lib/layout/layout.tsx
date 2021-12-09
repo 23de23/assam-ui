@@ -1,8 +1,12 @@
 import React, { ReactElement } from "react";
 
+
 import Sider from './sider'
 import {scopedClassMaker} from '../helpers/classes'
 import './layout.scss'
+import Content from "./content";
+import Footer from "./footer";
+import Header from "./header";
 
 const sc = scopedClassMaker('assam-layout')
 
@@ -23,3 +27,4 @@ const  Layout = (props:Props) => {
 }
 
 export default Layout
+export {Content,Footer,Header,Layout,Sider}

@@ -5,11 +5,10 @@ import {HashRouter as Router,NavLink,Route} from 'react-router-dom'
 import IconCodeVisible from './lib/icon/icon.codeVisible'
 import DialogExample from './lib/dialog/dialog.Example'
 import ButtonExample from './lib/button/button.example'
+import FormExample from './lib/form/form.example'
 import LayoutExample from './lib/layout/layout.example'
-import Layout from './lib/layout/layout'
-import Header from './lib/layout/header'
-import Sider from './lib/layout/sider'
-import Content from './lib/layout/content'
+import {Layout,Header,Sider,Content} from './lib/layout/layout'
+
 
 import './example.scss'
 import Footer from './lib/layout/footer'
@@ -40,6 +39,9 @@ ReactDOM.render((
                         <li>
                             <NavLink to='/layout'>Layout</NavLink>
                         </li>
+                        <li>
+                            <NavLink to='/form'>Form</NavLink>
+                        </li>
                     </ul>
                 </Sider>
                 <Content className='global-content'>
@@ -47,6 +49,7 @@ ReactDOM.render((
 					<Route path="/button" component={ButtonExample}/>
 					<Route path="/dialog" component={DialogExample}/>
 					<Route path="/Layout" component={LayoutExample}/>
+					<Route path="/Form" component={FormExample}/>
                 </Content>
             </Layout>
             <Footer className='global-footer'>
