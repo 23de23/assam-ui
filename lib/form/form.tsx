@@ -9,11 +9,12 @@ interface Props{
   fields:Array<{name:string,label:string,input:{type:string}}>,
   buttons:ReactFragment,
   onSubmit:React.FormEventHandler<HTMLFormElement>,
-  onChange:(newForm:anyObject) => void
+  onChange:(newForm:anyObject) => void,
+  errors:{[k:string]:Array<string>}
 }
 
 const Form:React.FunctionComponent<Props> = (props) => {
-  const {fields,buttons,value,onChange} = props
+  const {fields,buttons,value,onChange,errors} = props
   const onSubmit:React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault()
     props.onSubmit(e)
@@ -32,6 +33,7 @@ const Form:React.FunctionComponent<Props> = (props) => {
           <input type={f.input.type} 
                  onChange={onInputChange.bind(null,f.name)}
           ></input>
+          <div>{errors[f.name]}</div>
         </div>
       )}
       <div>
