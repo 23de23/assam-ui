@@ -1,3 +1,4 @@
+import Input from "@lib/input/input"
 import React, { ReactFragment } from "react"
 
 export interface anyObject{
@@ -30,9 +31,9 @@ const Form:React.FunctionComponent<Props> = (props) => {
       {fields.map((f)=>
         <div key={f.name}>
           {f.label}
-          <input type={f.input.type} 
+          <Input type={f.input.type} 
                  onChange={onInputChange.bind(null,f.name)}
-          ></input>
+          ></Input>
           <div>{errors[f.name]}</div>
         </div>
       )}

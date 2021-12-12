@@ -8,6 +8,7 @@ import ButtonExample from './lib/button/button.example'
 import FormExample from './lib/form/form.example'
 import LayoutExample from './lib/layout/layout.example'
 import {Layout,Header,Sider,Content} from './lib/layout/layout'
+import InputExample from './lib/input/input.example'
 
 
 import './example.scss'
@@ -34,6 +35,9 @@ ReactDOM.render((
                             <NavLink to='/button'>Button</NavLink>
                         </li>
                         <li>
+                            <NavLink to='/input'>Input</NavLink>
+                        </li>
+                        <li>
                             <NavLink to='/dialog'>Dialog</NavLink>
                         </li>
                         <li>
@@ -50,6 +54,7 @@ ReactDOM.render((
 					<Route path="/dialog" component={DialogExample}/>
 					<Route path="/Layout" component={LayoutExample}/>
 					<Route path="/Form" component={FormExample}/>
+					<Route path="/Input" component={InputExample}/>
                 </Content>
             </Layout>
             <Footer className='global-footer'>

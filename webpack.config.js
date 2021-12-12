@@ -5,7 +5,11 @@ module.exports = {
         index: './lib/index.tsx'
     },
     resolve: { //支持文件
-        extensions: ['.ts', '.tsx', '.js', '.jsx']
+        extensions: ['.ts', '.tsx', '.js', '.jsx'],
+        alias:{
+            "@":path.resolve("./"),
+            "@lib":path.resolve("lib")
+        },
     },
     output: { //出口
         // path:'./dist', 此写法错误在window与mac或者linux上文件路径并不都是/
