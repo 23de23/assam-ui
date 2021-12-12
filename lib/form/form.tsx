@@ -1,6 +1,8 @@
 import Input from "@lib/input/input"
 import React, { ReactFragment } from "react"
 
+import './form.scss'
+
 export interface anyObject{
   [k:string]:any
 }
@@ -28,18 +30,26 @@ const Form:React.FunctionComponent<Props> = (props) => {
 
   return(
     <form onSubmit={onSubmit}>
-      {fields.map((f)=>
-        <div key={f.name}>
-          {f.label}
-          <Input type={f.input.type} 
-                 onChange={onInputChange.bind(null,f.name)}
-          ></Input>
-          <div>{errors[f.name]}</div>
-        </div>
-      )}
-      <div>
-        {buttons}
-      </div>
+      <table>
+        <tbody>
+          {fields.map((f)=>
+            <tr key={f.name}>
+              <td>
+                <span>{f.label}</span>
+              </td>
+              <td>
+                <Input type={f.input.type} 
+                    onChange={onInputChange.bind(null,f.name)}>
+                </Input>
+                <div>{errors[f.name]}</div>
+              </td>
+            </tr>
+          )}
+          <div>
+            {buttons}
+          </div>
+        </tbody>
+      </table>
     </form>
   )
 }
