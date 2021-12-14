@@ -7,7 +7,8 @@ interface FormRule {
   required?:Boolean,
   minLength?:number,
   maxLength?:number,
-  pattern?:RegExp
+  pattern?:RegExp,
+  validator?:(key:string) => Promise<string>,
 }
 interface FormError {
   [k:string]:string[]
@@ -15,9 +16,9 @@ interface FormError {
 
 
 
-const validator = (formData:anyObject,rules:FormRules):FormError => {
+const validator = (formData:anyObject,rules:FormRules,callback:(errors:any)=>void):FormError => {
   let errors:any = {}
-  const addError = (key:string,error:string) => {
+  const addError = (key:string,error:string | Promise<string>) => {
     if(!errors[key]){
       errors[key] = [error]
     }else{
@@ -26,6 +27,11 @@ const validator = (formData:anyObject,rules:FormRules):FormError => {
   }
   rules.map((rule)=>{
     const value = formData[rule.key]
+      if(rule.validator){
+        const promise = rule.validator(value)
+        addError(rule.key,promise)
+      }
+
       if(rule.required && (value === undefined || value === null || value === '')){
         addError(rule.key,'请输入')
       }
@@ -42,7 +48,35 @@ const validator = (formData:anyObject,rules:FormRules):FormError => {
         addError(rule.key,'请输入正确的值')
       }
   })
+  
+  const newErrors:[string,Promise<string>][] = falt(errors)
+
+  const promiseList =  newErrors.map(([key,promiseOrSting]) => {
+    const promise = promiseOrSting instanceof Promise ? promiseOrSting : Promise.reject(promiseOrSting)
+    return promise.then(()=>[key,null],(rej)=>[key,rej])
+  })
+
+
+  Promise.all(promiseList).then((res)=>{
+    let arr:{[k:string]:string[]} = {}
+    res.filter((item) => Boolean(item[1])).map(([key,value]) => {
+      arr[key] ? arr[key].push(value) : arr[key] = [value]
+    })
+
+    callback(arr)
+  })
+
   return errors
+}
+
+function falt(data:{[k:string] : string|Promise<string>[]}) {
+  let newErrors:any = []
+  Object.entries(data).map(([key,val])=>{
+    for(let i = 0; i<val.length; i++){
+      newErrors.push([key,val[i]])
+    }
+  })
+  return newErrors
 }
 
 

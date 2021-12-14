@@ -14,18 +14,33 @@ const FormExample:React.FunctionComponent = () => {
     {name: 'password', label: '密码', input: {type: 'password'}},
   ]
   const [errors,setErrors] = useState({})
+
+  const UrlName = (key:string,success:(str?:any)=>void,fill:(tips:string)=>void) => {
+    const userArr = ['张三','李四','王老五','aaa']
+    setTimeout(() => {
+      userArr.includes(key) ? fill('名字重复了大哥') : success()
+    }, 1000);
+  }
+  const userValidator = (key:string):Promise<string> =>{
+    return new Promise((res,rej) => {
+      UrlName(key,res,rej)
+    })
+  }
+
   const onSubmit = () => {
     const rules = [
       {key:'username',required:true},
       {key:'username',minLength:2,maxLength:5},
       {key:'username',pattern:/^[A-Za-z0-9]+$/},
+      {key:'username',validator:userValidator},
 
       {key:'password',required:true},
       {key:'password',minLength:2,maxLength:5},
       {key:'password',pattern:/^[A-Za-z0-9]+$/}
     ]
-    console.log(validator(formData,rules))
-    setErrors(validator(formData,rules))
+    validator(formData,rules,(errors)=>{
+      setErrors(errors)
+    })
   }
 
 
