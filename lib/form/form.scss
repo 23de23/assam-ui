@@ -1,0 +1,23 @@
+.assam-form{
+  &-td{
+    padding-bottom: 8px;
+    vertical-align: top;
+  }
+  &-label{
+    line-height: 32px;
+  }
+
+  &-tr:last-child td{
+    padding-bottom: 0;
+  }
+
+  &-td + &-td{
+    padding-left: 16px;
+  }
+
+  &-error{
+    font-size: 0.8em;
+    color: red;
+  }
+
+}

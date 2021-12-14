@@ -1,9 +1,23 @@
 import React from "react"
+import './button.scss'
+import {scopedClassMaker} from '../helpers/classes'
 
-function button(){
+
+interface Props extends React.ButtonHTMLAttributes<HTMLElement> {
+  level?: 'important' | 'danger' | 'normal'
+}
+
+const sc = scopedClassMaker('assam-button')
+
+const Button:React.FunctionComponent<Props> = (props) => {
+  const {className,level,...restProps} = props
   return (
-    <div>我是按钮</div>
+    <button {...restProps} className={sc({['']:true,[level ? level : '']:true},{extra:className})}></button>
   )
 }
 
-export default button
+Button.defaultProps = {
+  level: 'normal'
+};
+
+export default Button
