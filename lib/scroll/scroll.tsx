@@ -3,6 +3,7 @@ import React from "react"
 import { scopedClassMaker } from "../helpers/classes"
 
 import './scroll.scss'
+import scrollbarWidth from "./scrollbar-width"
 
 interface Props extends React.HtmlHTMLAttributes<HTMLDivElement>{
 
@@ -15,7 +16,7 @@ const Scroll = (props:Props) => {
   const {children,className,...restProps}  = props
   return(
     <div {...restProps} className={sc('',{extra:className})}>
-      <div className={sc('inner')}>
+      <div className={sc('inner')} style={{right:-scrollbarWidth()}}>
         {children}
       </div>
     </div>
