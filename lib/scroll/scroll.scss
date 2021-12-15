@@ -1,0 +1,14 @@
+.assam-scroll{
+  overflow: hidden;
+  position: relative;
+
+  &-inner{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: -17px;
+    overflow: auto;
+    height: 100%;
+  }
+}

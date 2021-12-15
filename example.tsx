@@ -9,6 +9,7 @@ import FormExample from './lib/form/form.example'
 import LayoutExample from './lib/layout/layout.example'
 import {Layout,Header,Sider,Content} from './lib/layout/layout'
 import InputExample from './lib/input/input.example'
+import ScrollExample from './lib/scroll/scroll.example'
 
 
 import './example.scss'
@@ -46,6 +47,9 @@ ReactDOM.render((
                         <li>
                             <NavLink to='/form'>Form</NavLink>
                         </li>
+                        <li>
+                            <NavLink to='/scroll'>croll</NavLink>
+                        </li>
                     </ul>
                 </Sider>
                 <Content className='global-content'>
@@ -55,6 +59,7 @@ ReactDOM.render((
 					<Route path="/Layout" component={LayoutExample}/>
 					<Route path="/Form" component={FormExample}/>
 					<Route path="/Input" component={InputExample}/>
+					<Route path="/scroll" component={ScrollExample}/>
                 </Content>
             </Layout>
             <Footer className='global-footer'>
