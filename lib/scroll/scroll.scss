@@ -3,6 +3,7 @@
   position: relative;
 
   &-inner{
+    border: 1px solid red;
     position: absolute;
     top: 0px;
     left: 0px;
@@ -10,5 +11,22 @@
     right: 0px;
     overflow: auto;
     height: 100%;
+  }
+
+  &-track{
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 10px;
+  }
+
+  &-scrollBar{
+    position: absolute;
+    width: 6px;
+    left: 2px;
+    height: 0;
+    border-radius: 3px;
+    background-color: rgba(128, 128, 128, 0.8);
   }
 }
