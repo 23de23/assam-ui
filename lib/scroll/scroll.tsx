@@ -19,9 +19,11 @@ const Scroll = (props:Props) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const [scrollBarHeight,setScrollBarHeight] = useState(0)
   const [scrollBarTop,_setScrollBarTop] = useState(0)
+  const [barVisible, setBarVisible] = useState(false);
 
-  const initYRef = useRef(0)
-  const pullingRef = useRef(false)
+  const barScrollTopRef = useRef(0)
+  const barClientYRef = useRef(0)
+  const barClickRef = useRef(false)
 
 
   const setScrollBarTop = (scrollTop:number) => {
@@ -38,32 +40,56 @@ const Scroll = (props:Props) => {
     const viewHeight = current!.getBoundingClientRect().height //可视区域高度
     const scrollHeight = current!.scrollHeight //可滚动区域高度
     setScrollBarHeight(viewHeight*viewHeight/scrollHeight)
+
+    document.addEventListener('mousemove',onBarMouseMove)
+    document.addEventListener('mouseup',onBarMouseUp)
+    document.addEventListener('selectstart',onSelect)
+
+    return () => {
+      document.removeEventListener('mousemove',onBarMouseMove)
+      document.removeEventListener('mouseup',onBarMouseUp)
+      document.removeEventListener('selectstart',onSelect)
+    }
   },[])
+
+  const timeVisible:any = useRef(null)
   const onScroll = () => {
+    setBarVisible(true)
     const {current} = containerRef
     const viewHeight = current!.getBoundingClientRect().height //可视区域高度
     const scrollHeight = current!.scrollHeight //可滚动区域高度
     const scrollTop = current!.scrollTop
     setScrollBarTop(scrollTop*viewHeight/scrollHeight)
+    if(timeVisible.current) clearTimeout(timeVisible.current)
+    timeVisible.current = setTimeout(() => {
+      setBarVisible(false)
+    }, 1000);
   }
 
   const barMouseDowm:React.MouseEventHandler = (e) => {
-    pullingRef.current = true
-    initYRef.current = e.clientY
-    console.log(this)
+    barClickRef.current = true
+    barClientYRef.current = e.clientY
+    barScrollTopRef.current = scrollBarTop
+
+
   }
-  const barMouseUp = (e:MouseEvent) => {
-    pullingRef.current = false
+  const onBarMouseUp = (e:MouseEvent) => {
+    barClickRef.current = false
   }
-  const barMouseMove = (e:MouseEvent) => {
-    if(!pullingRef.current) return 
-    setScrollBarTop(scrollBarTop + e.clientY - initYRef.current)
+  const onBarMouseMove = (e:MouseEvent) => {
+    if(!barClickRef.current) return 
+    const barScrollTop = barScrollTopRef.current + (e.clientY - barClientYRef.current)
+    setScrollBarTop(barScrollTop)
+
+    const {current} = containerRef
+    const viewHeight = current!.getBoundingClientRect().height //可视区域高度
+    const scrollHeight = current!.scrollHeight //可滚动区域高度
+    containerRef.current!.scrollTop = (barScrollTop*scrollHeight/viewHeight)
   }
 
-  useEffect(()=>{
-    document.addEventListener('mousemove',barMouseMove)
-    document.addEventListener('mouseup',barMouseUp)
-  },[])
+  const onSelect = (e:Event) => {
+    if(barClickRef.current) e.preventDefault()
+  }
 
   return(
     <div {...restProps} className={sc('',{extra:className})}>
@@ -73,10 +99,11 @@ const Scroll = (props:Props) => {
            style={{right:-scrollbarWidth()}}>
         {children}
       </div>
+      {barVisible ? 
       <div className={sc('track')}
            onMouseDown={barMouseDowm}>
         <div style={{height:scrollBarHeight,transform:`translateY(${scrollBarTop}px)`}} className={sc('scrollBar')}></div>
-      </div>
+      </div> : null}
     </div>
   )
 }
