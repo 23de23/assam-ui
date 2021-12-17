@@ -10,6 +10,7 @@ import LayoutExample from './lib/layout/layout.example'
 import {Layout,Header,Sider,Content} from './lib/layout/layout'
 import InputExample from './lib/input/input.example'
 import ScrollExample from './lib/scroll/scroll.example'
+import TreeExample from './lib/tree/tree.example'
 
 
 import './example.scss'
@@ -48,7 +49,10 @@ ReactDOM.render((
                             <NavLink to='/form'>Form</NavLink>
                         </li>
                         <li>
-                            <NavLink to='/scroll'>croll</NavLink>
+                            <NavLink to='/scroll'>Croll</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to='/tree'>Tree</NavLink>
                         </li>
                     </ul>
                 </Sider>
@@ -60,6 +64,7 @@ ReactDOM.render((
 					<Route path="/Form" component={FormExample}/>
 					<Route path="/Input" component={InputExample}/>
 					<Route path="/scroll" component={ScrollExample}/>
+					<Route path="/tree" component={TreeExample}/>
                 </Content>
             </Layout>
             <Footer className='global-footer'>
