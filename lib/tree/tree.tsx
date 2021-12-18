@@ -1,4 +1,4 @@
-import React from "react"
+import React, { ChangeEventHandler } from "react"
 import {scopedClassMaker} from '../helpers/classes'
 import './tree.scss'
 const sc = scopedClassMaker('assam-tree')
@@ -8,29 +8,59 @@ interface treeDataItem{
   value:string,
   children?:treeDataItem[]
 }
-interface Props{
+
+type Props = {
   treeData:treeDataItem[],
-  treeCheakArr:string [],
-  onChange:(value:string,checked:boolean) => void
-}
+  // onChange:(newChecked:string | string[]) => void,
+} & ({
+  multiple: true,
+  selected: string[],
+  onChange: (values: string[]) => void
+} | {
+  multiple?: false,
+  selected: string,
+  onChange: (values: string) => void
+})
 
 const True:React.FunctionComponent<Props> = (props) => {
-  const {treeData,treeCheakArr,onChange} = props
 
-  const x = (treeItem:treeDataItem,level=0) => {
+  const {treeData,selected,onChange,multiple} = props
+
+  const randerItem = (treeItem:treeDataItem,level=0) => {
+
+    const fnOnChange:ChangeEventHandler<HTMLInputElement> = (e) => {
+      if(props.multiple === true){
+        if(e.target.checked){
+          props.onChange([...props.selected,treeItem.value])
+        }else{
+          props.onChange(props.selected.filter((i)=>i !== treeItem.value))
+        }
+      }else{
+        const aa = treeItem.value === selected ? '' : treeItem.value
+        props.onChange(aa)
+      }
+    }
+
+    const checkedBoolean = multiple ? selected.indexOf(treeItem.value)>=0 : treeItem.value===selected
+
     return <div key={treeItem.text} className={sc({['level-'+level]:true,item:true})}>
       <div className={sc('text')}>
-        <input type='checkBox' checked={treeCheakArr.indexOf(treeItem.value)>=0} onChange={(e) => onChange(treeItem.value,e.target.checked)}></input>
-        {treeItem.value}
+        <label>
+          <input type='checkBox' 
+                 checked={checkedBoolean} 
+                 onChange={fnOnChange}/>
+          {treeItem.value}
+        </label>
       </div>
-      {treeItem.children && treeItem.children.map(item => x(item,level+1))}
+      {treeItem.children && treeItem.children.map(item => randerItem(item,level+1))}
     </div>
   }
 
   return(
     <div className={sc('')}>
+      {selected}
       {treeData.map(item=>{
-        return x(item)
+        return randerItem(item)
       })}
     </div>
   )

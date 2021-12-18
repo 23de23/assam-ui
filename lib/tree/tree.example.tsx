@@ -3,7 +3,8 @@ import React, { useState } from "react"
 import Tree from './tree'
 
 const TreeExample = () => {
-  const [treeCheakArr,setTreeCheakArr] = useState(['1','1.1.1','2.1'])
+  // const [selected,setSelected] = useState(['1','1.1.1','2.1'])
+  const [selected,setSelected] = useState("1")
   const [treeData] = useState([
     { text: '1', 
       value: '1', 
@@ -33,19 +34,16 @@ const TreeExample = () => {
     }
   ])
 
-  const onChange = (value:string,checked:boolean) => {
-    console.log(value+'aaaa'+checked)
-    if(checked){
-      setTreeCheakArr([...treeCheakArr,value])
-    }else{
-      const aa = treeCheakArr.filter(i => i!== value)
-      setTreeCheakArr(aa)
-    }
+  const onChange = (newChecked:any) => {
+    setSelected(newChecked)
   }
 
   return (
     <div style={{width:400}}>
-      <Tree treeData={treeData} treeCheakArr={treeCheakArr} onChange={onChange}></Tree>
+      <Tree treeData={treeData}
+            selected={selected}
+            onChange={onChange}
+            multiple={false}></Tree>
     </div>
   )
 }
