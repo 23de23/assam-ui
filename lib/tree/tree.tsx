@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler } from "react"
+import React, { ChangeEventHandler, useState } from "react"
 import {scopedClassMaker} from '../helpers/classes'
 import './tree.scss'
 const sc = scopedClassMaker('assam-tree')
@@ -11,7 +11,6 @@ interface treeDataItem{
 
 type Props = {
   treeData:treeDataItem[],
-  // onChange:(newChecked:string | string[]) => void,
 } & ({
   multiple: true,
   selected: string[],
@@ -25,6 +24,14 @@ type Props = {
 const True:React.FunctionComponent<Props> = (props) => {
 
   const {treeData,selected,onChange,multiple} = props
+
+  if(multiple){
+    console.log(selected)
+  }
+
+  if(props.multiple){
+    console.log(props.selected)
+  }
 
   const randerItem = (treeItem:treeDataItem,level=0) => {
 
@@ -43,6 +50,14 @@ const True:React.FunctionComponent<Props> = (props) => {
 
     const checkedBoolean = multiple ? selected.indexOf(treeItem.value)>=0 : treeItem.value===selected
 
+    const [show,setShow] = useState(true)
+    const unfold = () => {
+      setShow(!show)
+    }
+    const fold = () => {
+      setShow(!show)
+    }
+
     return <div key={treeItem.text} className={sc({['level-'+level]:true,item:true})}>
       <div className={sc('text')}>
         <label>
@@ -51,8 +66,12 @@ const True:React.FunctionComponent<Props> = (props) => {
                  onChange={fnOnChange}/>
           {treeItem.value}
         </label>
+        { treeItem.children ? show ? <span onClick={unfold}>-</span> : <span onClick={fold}>+</span> : ''}
       </div>
-      {treeItem.children && treeItem.children.map(item => randerItem(item,level+1))}
+      <div className={sc({unfold:!show})}>
+        {treeItem.children && treeItem.children.map(item => randerItem(item,level+1))}
+      </div>
+        
     </div>
   }
 
