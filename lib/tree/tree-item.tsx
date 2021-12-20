@@ -57,6 +57,12 @@ const TreeItem:React.FunctionComponent<Props> = (props) => {
               childrenDiv.current.style.height = '0px'
               childrenDiv.current.getBoundingClientRect()
               childrenDiv.current.style.height = height + 'px'
+              const afterUnfold = ()=>{
+                if(!childrenDiv.current)return
+                childrenDiv.current.style.height = "auto"
+                childrenDiv.current.removeEventListener("transitionend",afterUnfold)
+              }
+              childrenDiv.current.addEventListener('transitionend',afterUnfold)
           }else{
               const height = childrenDiv.current.getBoundingClientRect().height
               childrenDiv.current.style.height = height + 'px'
