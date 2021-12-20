@@ -14,7 +14,7 @@
   }
 
   &-unfold{
-    height: 0px;
+    transition: height;
     overflow: hidden;
   }
 

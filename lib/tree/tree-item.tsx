@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, useState } from "react"
+import React, { ChangeEventHandler, useRef, useState } from "react"
 import {scopedClassMaker} from '../helpers/classes'
 import useUpdate from "../hooks"
 const sc = scopedClassMaker('assam-tree')
@@ -10,7 +10,6 @@ const sc = scopedClassMaker('assam-tree')
   }
 
 const TreeItem:React.FunctionComponent<Props> = (props) => {
-    console.log("render")
     const {treePops,treeItem,level} = props
    
     const fnOnChange:ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -30,15 +29,42 @@ const TreeItem:React.FunctionComponent<Props> = (props) => {
   
       const [show,setShow] = useState(true)
       const unfold = () => {
+        if(!transitionReady.current) return
         setShow(!show)
       }
       const fold = () => {
+        if(!transitionReady.current) return
         setShow(!show)
       }
 
-      
+      const childrenDiv = useRef<HTMLDivElement>(null)
+      const transitionReady = useRef(true)
       useUpdate(show,()=>{
-        console.log("show变化了",show)
+        if(childrenDiv.current){
+          if(!transitionReady.current){
+            return
+          }
+          const transitionDuration = 300 //预留接口用户可传入时间单位ms的number
+          childrenDiv.current.style.transitionDuration = transitionDuration+'ms'
+          transitionReady.current = false
+          setTimeout(() => {
+            transitionReady.current = true
+          }, transitionDuration);
+
+          if(show){
+              childrenDiv.current.style.height = "auto"
+              const height = childrenDiv.current.getBoundingClientRect().height
+              childrenDiv.current.style.height = '0px'
+              childrenDiv.current.getBoundingClientRect()
+              childrenDiv.current.style.height = height + 'px'
+          }else{
+              const height = childrenDiv.current.getBoundingClientRect().height
+              childrenDiv.current.style.height = height + 'px'
+              childrenDiv.current.getBoundingClientRect()
+              childrenDiv.current.style.height = '0px'
+          }
+
+        }
       })
   
       return <div key={treeItem.text} className={sc({['level-'+level]:true,item:true})}>
@@ -51,7 +77,7 @@ const TreeItem:React.FunctionComponent<Props> = (props) => {
           </label>
           { treeItem.children ? show ? <span onClick={unfold}>-</span> : <span onClick={fold}>+</span> : ''}
         </div>
-        <div className={sc({unfold:!show})}>
+        <div className={sc('unfold')} ref={childrenDiv}>
           {treeItem.children && treeItem.children.map(item =>
             <TreeItem treeItem={item}
                       level={level+1}
