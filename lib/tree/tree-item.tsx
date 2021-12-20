@@ -1,5 +1,6 @@
 import React, { ChangeEventHandler, useState } from "react"
 import {scopedClassMaker} from '../helpers/classes'
+import useUpdate from "../hooks"
 const sc = scopedClassMaker('assam-tree')
 
   interface Props {
@@ -34,6 +35,11 @@ const TreeItem:React.FunctionComponent<Props> = (props) => {
       const fold = () => {
         setShow(!show)
       }
+
+      
+      useUpdate(show,()=>{
+        console.log("show变化了",show)
+      })
   
       return <div key={treeItem.text} className={sc({['level-'+level]:true,item:true})}>
         <div className={sc('text')}>
