@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef } from "react"
 
 const useUpdate = (dep:boolean,fn:()=> void) => {
-  const [count,setCount] = useState(0)
+  const count = useRef(false)
   useEffect(() => {
-    setCount(count +1)
-    if(count>0){
+    if(count.current){
       fn()
+    }else{
+      count.current = true
     }
   }, [dep])
 }

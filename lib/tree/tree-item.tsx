@@ -10,7 +10,7 @@ const sc = scopedClassMaker('assam-tree')
   }
 
 const TreeItem:React.FunctionComponent<Props> = (props) => {
-
+    console.log("render")
     const {treePops,treeItem,level} = props
    
     const fnOnChange:ChangeEventHandler<HTMLInputElement> = (e) => {
