@@ -3,8 +3,9 @@ import React, { useState } from "react"
 import Tree from './tree'
 
 const TreeExample = () => {
-  // const [selected,setSelected] = useState(['1','1.1.1','2.1'])
-  const [selected,setSelected] = useState("1")
+  const [selected,setSelected] = useState(['1','1.1','1.1.1','2','2.1','2.1.1','2.1.2'])
+  // const [selected,setSelected] = useState(['1','1.1','1.1.1'])
+  // const [selected,setSelected] = useState("1")
   const [treeData] = useState([
     { text: '1', 
       value: '1', 
@@ -43,7 +44,7 @@ const TreeExample = () => {
       <Tree treeData={treeData}
             selected={selected}
             onChange={onChange}
-            multiple={false}></Tree>
+            multiple={true}></Tree>
     </div>
   )
 }

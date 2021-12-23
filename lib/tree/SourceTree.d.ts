@@ -6,6 +6,7 @@ interface treeDataItem{
   
  type treePops = {
   treeData:treeDataItem[],
+  checkStrictly?:boolean
 } & ({
   multiple: true,
   selected: string[],
