@@ -28,6 +28,20 @@ ReactDOM.render((
             </Header>
             <Layout>
                 <Sider className='global-sider'>
+                    <ul>
+                        <li className=''>
+                            <NavLink to='/icon'>介绍</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to='/icon'>开始使用</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to='/icon'>色彩搭配</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to='/icon'>层级规范</NavLink>
+                        </li>
+                    </ul>
                     <h2>组件</h2>
                     <ul>
                         <li>
