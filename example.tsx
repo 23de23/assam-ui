@@ -45,28 +45,28 @@ ReactDOM.render((
                     <h2>组件</h2>
                     <ul>
                         <li>
-                            <NavLink to='/icon'>Icon</NavLink>
+                            <NavLink to='/icon'>Icon 图标</NavLink>
                         </li>
                         <li>
-                            <NavLink to='/button'>Button</NavLink>
+                            <NavLink to='/button'>Button 按钮</NavLink>
                         </li>
                         <li>
-                            <NavLink to='/input'>Input</NavLink>
+                            <NavLink to='/input'>Input 输入框</NavLink>
                         </li>
                         <li>
-                            <NavLink to='/dialog'>Dialog</NavLink>
+                            <NavLink to='/dialog'>Dialog 弹出框</NavLink>
                         </li>
                         <li>
-                            <NavLink to='/layout'>Layout</NavLink>
+                            <NavLink to='/layout'>Layout 布局</NavLink>
                         </li>
                         <li>
-                            <NavLink to='/form'>Form</NavLink>
+                            <NavLink to='/form'>Form 表单</NavLink>
                         </li>
                         <li>
-                            <NavLink to='/scroll'>Croll</NavLink>
+                            <NavLink to='/scroll'>Croll 滚动</NavLink>
                         </li>
                         <li>
-                            <NavLink to='/tree'>Tree</NavLink>
+                            <NavLink to='/tree'>Tree 树形控件</NavLink>
                         </li>
                     </ul>
                 </Sider>
