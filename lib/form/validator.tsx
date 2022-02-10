@@ -80,4 +80,4 @@ function falt(data:{[k:string] : string|Promise<string>[]}) {
 }
 
 
-export default validator
+export default validator      
