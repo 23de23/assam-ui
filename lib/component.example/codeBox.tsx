@@ -1,6 +1,8 @@
 import React, { FunctionComponent, useState } from 'react'
 
 import Icon from "../icon/icon"
+import CodeVisible from './/codeVIsible'
+
 
 import './codeBox.scss'
 
@@ -8,8 +10,8 @@ interface Props{
   egComponent:FunctionComponent,
   text:string,
   title:string,
-  codeComponent:FunctionComponent,
-  bgc:string
+  bgc?:string,
+  code:string
 }
 
 const CodeBox:React.FunctionComponent<Props> = (props)=>{
@@ -30,7 +32,7 @@ const CodeBox:React.FunctionComponent<Props> = (props)=>{
           </div>
       </div>
       {
-        visible ? <div>iconWrapper</div>:""
+        visible ? <CodeVisible code={props.code}></CodeVisible>:""
       }
     </div>
   )

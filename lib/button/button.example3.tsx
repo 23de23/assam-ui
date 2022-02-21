@@ -2,7 +2,7 @@ import React, { Fragment } from "react"
 
 import Button from './button'
 
- const ButtonExample1:React.FunctionComponent = ()=>{
+ const ButtonExample3:React.FunctionComponent = ()=>{
     return(
       <Fragment>
         <Button icon="Aim" style={{marginRight:20}}>left</Button>
@@ -11,4 +11,11 @@ import Button from './button'
     )
 }
 
-export default ButtonExample1
+const ButtonExample3_codeString = `
+  <Button icon="Aim">left</Button>
+  <Button icon="Aim" position="right">right</Button>
+`
+
+export {ButtonExample3_codeString}
+
+export default ButtonExample3

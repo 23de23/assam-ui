@@ -1,12 +1,12 @@
 import React from "react"
 
-import CodeBox from "../component.example/CodeBox"
+import CodeBox from "../component.example/codeBox"
 import ApiBox from "../component.example/apiBox"
-import ButtonExample1 from "./button.example1"
-import ButtonExample2 from "./button.example2"
-import ButtonExample3 from "./button.example3"
-import ButtonExample4 from "./button.example4"
-import ButtonExample5 from "./button.example5"
+import ButtonExample1,{ButtonExample1_codeString} from "./button.example1"
+import ButtonExample2,{ButtonExample2_codeString} from "./button.example2"
+import ButtonExample3,{ButtonExample3_codeString} from "./button.example3"
+import ButtonExample4,{ButtonExample4_codeString} from "./button.example4"
+import ButtonExample5,{ButtonExample5_codeString} from "./button.example5"
 
 import './button.example.scss'
 
@@ -42,27 +42,32 @@ const apiArry = [
                 title="按钮类型"
                 text="按钮有四种类型：默认按钮、主要按钮、虚线按钮和危险按钮。"
                 egComponent={ButtonExample1}
+                code={ButtonExample1_codeString}
             />
             <CodeBox
                 title="Disabled 和 Loading 状态"
                 text="设置按钮的禁用和加载中状态。"
                 egComponent={ButtonExample2}
+                code={ButtonExample2_codeString}
             />
             <CodeBox
                 title="Icon 图标"
                 text="设置内嵌 Icon 图标和位置。"
                 egComponent={ButtonExample3}
+                code={ButtonExample3_codeString}
             />
             <CodeBox
                 title="幽灵按钮"
                 text="幽灵按钮常用在有色背景上。"
                 egComponent={ButtonExample4}
                 bgc="#bec8c8"
+                code={ButtonExample4_codeString}
             />
             <CodeBox
                 title="按钮尺寸"
                 text="按钮有大、中、小三种尺寸。点击以查看对应尺寸的效果。"
                 egComponent={ButtonExample5}
+                code={ButtonExample5_codeString}
             />
             <ApiBox data={apiArry}></ApiBox>
         </div>

@@ -19,4 +19,18 @@ const sc = scopedClassMaker('example2-button')
     )
 }
 
+const ButtonExample2_codeString = `
+  import React, { useState } from "react"
+  const [loading,setLoading]  = useState(true)
+  const click = () => {
+    setLoading(!loading)
+  }
+
+  <Button disabled={true}>Disabled</Button>
+  <Button loading={true} level="important">Loading</Button>
+  <Button icon="Aim" loading={loading} level="important" onClick={click}>Click me</Button>
+`
+
+export {ButtonExample2_codeString}
+
 export default ButtonExample2

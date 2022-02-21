@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import Highlight, {defaultProps} from "prism-react-renderer";
 
 interface Props {
@@ -6,7 +6,6 @@ interface Props {
 }
 
 const CodeVIsible:React.FunctionComponent<Props> = (props) =>{
-    const [codeVisible, setCodeVisible] = useState(false);
     const {code,children} = props
     const codeBox = (
         <Highlight {...defaultProps} code={code} language="jsx">
@@ -29,8 +28,7 @@ const CodeVIsible:React.FunctionComponent<Props> = (props) =>{
                 {children}
             </div>
             <div>
-                <button onClick={() => setCodeVisible(!codeVisible)}>查看代码</button>
-                {codeVisible && codeBox}
+                {codeBox}
             </div>
         </div>
     )

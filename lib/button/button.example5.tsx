@@ -12,4 +12,12 @@ import Button from './button'
     )
 }
 
+const ButtonExample5_codeString = `
+  <Button size="small" level="important">small</Button>
+  <Button size="medium" level="important">medium</Button>
+  <Button size="large" level="important">large</Button>
+`
+
+export {ButtonExample5_codeString}
+
 export default ButtonExample5

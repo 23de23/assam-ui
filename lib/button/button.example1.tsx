@@ -13,4 +13,12 @@ import Button from './button'
     )
 }
 
+const ButtonExample1_codeString = `
+  <Button>normal</Button>
+  <Button level="important">important</Button>
+  <Button level="dashed">dashed</Button>
+  <Button level="danger">danger</Button>
+`
+
 export default ButtonExample1
+export {ButtonExample1_codeString}
