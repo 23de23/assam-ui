@@ -2,7 +2,6 @@ import React,{ Fragment } from "react"
 import CodeVisible from '../../codeVIsible'
 import IconExample1 from "./icon.example1"
 
-
 const IconCodeVisible = () =>{
     return(
         <Fragment>

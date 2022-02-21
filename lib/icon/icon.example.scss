@@ -17,10 +17,6 @@
       width: 16.66%;
       height: 100px;
       cursor: pointer;
-      svg{
-        width: 36px;
-        height: 36px;
-      }
       &:hover{
         background-color: $main-hover-color;
         fill: #fff;
@@ -40,5 +36,9 @@
         margin-bottom: 10px;
       }
     }
+  }
+  &-iconBox{
+    width: 36px;
+    height: 36px;
   }
 }

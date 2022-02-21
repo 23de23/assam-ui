@@ -1,0 +1,36 @@
+.code-box{
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  margin: 20px 0 40px 0;
+  .code-show{
+    display: flex;
+    padding: 40px 32px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    align-items: flex-end;
+  }
+  .code-text{
+    position: relative;
+    padding: 18px 32px;
+    .code-title{
+      position: absolute;
+      top: -11px;
+      left: 24px;
+      background-color: #fff;
+      font-size: 14px;
+      padding: 0 8px;
+      line-height: 22px;
+      cursor: default;
+      clear: rgba(0,0,0,0.85);
+      border-radius: 4px;
+    }
+    .code-icon{
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      right: 12px;
+      bottom: 18px;
+      cursor: pointer;
+      fill: #555555;
+    }
+  }
+}

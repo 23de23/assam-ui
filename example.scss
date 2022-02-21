@@ -16,7 +16,6 @@ h1 {
     line-height: 38px;
 }
 section {
-    // padding: 20px 0;
     padding-bottom: 20px;
     p {
         font-size: 14px;
@@ -29,7 +28,7 @@ $border-color:#eeeeee;
 $padding:16px;
 $main-color:#1890ff;
 body {
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .global-page{
@@ -104,6 +103,7 @@ body {
 .global-content{
     padding-left: 64px;
     padding-bottom: 32px;
+    padding-right: 32px;
     border: 1px solid red;
 
     margin: 0 auto;

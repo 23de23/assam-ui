@@ -1,0 +1,53 @@
+.apiBox{
+  width: 100%;
+  border-collapse: collapse;
+
+  display: block;
+  margin: 2em 0;
+  font-size: 13px;
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+  line-height: 1.8em;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  & th,& td{
+    text-align: left;
+    padding: 14px 24px;
+  }
+  & th{
+    color: #5c6b77;
+    font-weight: 500;
+    white-space: nowrap;
+    background: rgba(0,0,0,.02);
+  }
+
+  & th:first-child,& td:first-child{
+    border-left: 1px solid rgba(0, 0, 0, 0.15);
+  }
+  & th:last-child,& td:last-child{
+    border-right: 1px solid rgba(0, 0, 0, 0.15);
+  }
+
+  & tr{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  }
+
+  & td:first-child{
+    width: 18%;
+    color: #595959;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  & td:nth-child(2){
+    width: 45%;
+  }
+  & td:nth-child(3){
+    width: 42%;
+    color: #c41d7f;
+    font-size: 13px;
+  }
+  & td:nth-child(4){
+    width: 15%;
+    font-size: 13px;
+  }
+  
+}

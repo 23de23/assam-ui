@@ -83,7 +83,7 @@ ReactDOM.render((
                 </Content>
             </Layout>
             <Footer className='global-footer'>
-                &copy; 爱喝阿萨姆的男人
+                &copy; 爱喝阿萨姆的人
             </Footer>
         </Layout>
     </Router>

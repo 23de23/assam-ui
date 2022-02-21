@@ -5,6 +5,27 @@
   transition: all 250ms;
   cursor: pointer;
   border-radius: 4px;
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  &>.assam-icon{
+    width: 16px;
+    height: 16px;
+  }
+
+  &:disabled{
+    background-color: #e6e6e6;
+    color: rgba(0, 0, 0, 0.25);
+    cursor: not-allowed;
+  }
+
+  &:active{
+    color: white;
+    background: #4a9bfa;
+    opacity: 0.5;
+  }
+
   &:focus {
     outline: none;
   }
@@ -26,4 +47,73 @@
       border-color: lighten($main-color, 10%);
     }
   }
+  &-danger {
+    color: #f5222d;
+    border: 1px solid lighten(#333, 50%);
+    background: #f5f5f5;
+    &:hover, &:focus {
+      background: #f5222d;
+      border-color: #f5222d;
+      color: #fff;
+    }
+  }
+  &-dashed {
+    color: #333;
+    border: 1px dashed lighten(#333, 50%);
+    background: white;
+    &:hover, &:focus {
+      border-color: $main-color;
+      color: $main-color;
+    }
+  }
+
+  &-loading > svg{
+    animation: button-loading-spin 1s linear infinite;
+  }
+
+  &-small{
+    font-size: 12px;
+    line-height: 20px;
+    padding: 2px 10px;
+  }
+  // &-medium{
+
+  // }
+  &-large{
+    font-size: 16px;
+    line-height: 24px;
+    padding: 6px 15px;
+  }
+
+  &-ghost{
+    background-color: transparent;
+  }
+  &-ghost.assam-button-normal{
+    color: #fff;
+    border-color: #fff;
+    background-color: transparent;
+    &:hover, &:focus {
+      background: lighten($main-color, 10%);
+      border-color: lighten($main-color, 10%);
+    }
+  }
+  &-ghost.assam-button-important{
+    color: #1890ff;
+  }
+  &-ghost.assam-button-dashed{
+    color: #fff;
+    border-color: #fff;
+    &:hover, &:focus {
+      border-color: $main-color;
+      color: $main-color;
+    }
+  }
+  &-ghost.assam-button-danger{
+    border-color: #f5222d;
+  }
+}
+
+@keyframes button-loading-spin{
+  0% {transform:rotateZ(0);}
+  100% {transform:rotateZ(360deg)}
 }

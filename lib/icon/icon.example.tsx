@@ -7,6 +7,7 @@ import Example3 from './icon.example3'
 import './icon.example.scss'
 
 import { scopedClassMaker } from "../helpers/classes"
+import IconCodeVisible from "./icon.codeVisible"
 const sc = scopedClassMaker('example-icon')
  const IconExample:React.FunctionComponent = ()=>{
     return(
@@ -38,6 +39,7 @@ const sc = scopedClassMaker('example-icon')
               <li><p>支持多色图标。</p></li>
           </ul>
         </section>
+        <IconCodeVisible></IconCodeVisible>
       </div>
     )
 }
