@@ -11,11 +11,12 @@ interface Props{
   text:string,
   title:string,
   bgc?:string,
-  code:string
+  code:string,
+  visible?:true | false
 }
 
 const CodeBox:React.FunctionComponent<Props> = (props)=>{
-  const [visible,setVisible] = useState(false)
+  const [visible,setVisible] = useState(props.visible ? props.visible : false)
   const onVisibleCode = ()=>{
     setVisible(!visible)
   }

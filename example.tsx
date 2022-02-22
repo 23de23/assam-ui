@@ -2,8 +2,11 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import {HashRouter as Router,NavLink,Route} from 'react-router-dom'
 
-// import IconCodeVisible from './lib/icon/icon.codeVisible'
-import IconCodeVisible from './lib/icon/icon.example'
+import Introduce from './lib/page.example/introduce'
+import StartUsing from "./lib/page.example/startUsing"
+import ColorMatching from "./lib/page.example/colorMatching"
+import ZIndex from "./lib/page.example/zIndx"
+import IconExample from './lib/icon/icon.example'
 import DialogExample from './lib/dialog/dialog.Example'
 import ButtonExample from './lib/button/button.example'
 import FormExample from './lib/form/form.example'
@@ -30,17 +33,17 @@ ReactDOM.render((
             <Layout>
                 <Sider className='global-sider'>
                     <ul>
-                        <li className=''>
-                            <NavLink to='/icon'>介绍</NavLink>
+                        <li>
+                            <NavLink to='/introduce'>介绍</NavLink>
                         </li>
                         <li>
-                            <NavLink to='/icon'>开始使用</NavLink>
+                            <NavLink to='/startUsing'>开始使用</NavLink>
                         </li>
                         <li>
-                            <NavLink to='/icon'>色彩搭配</NavLink>
+                            <NavLink to='/colorMatching'>色彩搭配</NavLink>
                         </li>
                         <li>
-                            <NavLink to='/icon'>层级规范</NavLink>
+                            <NavLink to='/zIndex'>层级规范</NavLink>
                         </li>
                     </ul>
                     <h2>组件</h2>
@@ -72,7 +75,11 @@ ReactDOM.render((
                     </ul>
                 </Sider>
                 <Content className='global-content'>
-					<Route path="/icon" component={IconCodeVisible}/>
+					<Route path="/introduce" component={Introduce}/>
+					<Route path="/startUsing" component={StartUsing}/>
+					<Route path="/colorMatching" component={ColorMatching}/>
+					<Route path="/zIndex" component={ZIndex}/>
+					<Route path="/icon" component={IconExample}/>
 					<Route path="/button" component={ButtonExample}/>
 					<Route path="/dialog" component={DialogExample}/>
 					<Route path="/Layout" component={LayoutExample}/>
