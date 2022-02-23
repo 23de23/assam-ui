@@ -1,0 +1,47 @@
+.assam-message{
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  transform: translate(-50%,0);
+  font-size: 16px;
+  min-width: 380px;
+  padding: 14px 16px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #fff;
+
+  &-success{
+    background-color: #f0f9eb;
+    color: #98c894;
+    // border: 1px solid #67c23a;
+    svg{
+      fill:#67c23a;
+    }
+  }
+  &-waring{
+    background-color: #fdf6ec;
+    color: #e6a23c;
+    // border: 1px solid #e9a740;
+    svg{
+      fill:#e9a740;
+    }
+  }
+  &-info{
+    background-color: #edf2fc;
+    color: #909399;
+    // border: 1px solid #a3a6ad;
+    svg{
+      fill:#a3a6ad;
+    }
+  }
+  &-error{
+    background-color: #fef0f0;
+    color: #f56c6c;
+    // border: 1px solid #f57878;
+    svg{
+      fill:#f57878;
+    }
+  }
+}

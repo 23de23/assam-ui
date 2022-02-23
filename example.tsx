@@ -15,6 +15,7 @@ import {Layout,Header,Sider,Content} from './lib/layout/layout'
 import InputExample from './lib/input/input.example'
 import ScrollExample from './lib/scroll/scroll.example'
 import TreeExample from './lib/tree/tree.example'
+import MessageExample from './lib/message/message.example'
 
 
 import './example.scss'
@@ -72,6 +73,9 @@ ReactDOM.render((
                         <li>
                             <NavLink to='/tree'>Tree 树形控件</NavLink>
                         </li>
+                        <li>
+                            <NavLink to='/message'>Message 全局提示</NavLink>
+                        </li>
                     </ul>
                 </Sider>
                 <Content className='global-content'>
@@ -87,6 +91,7 @@ ReactDOM.render((
 					<Route path="/Input" component={InputExample}/>
 					<Route path="/scroll" component={ScrollExample}/>
 					<Route path="/tree" component={TreeExample}/>
+					<Route path="/message" component={MessageExample}/>
                 </Content>
             </Layout>
             <Footer className='global-footer'>
