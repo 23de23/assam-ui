@@ -12,7 +12,7 @@ const sc = scopedClassMaker('example-icon')
     return(
       <div className={sc('')}>
         <section>
-          <h1>Pager 分页</h1>
+          <h1>Icon 图标</h1>
           <p>
               语义化的矢量图形。点击示例即可直接使用图标组件。
           </p>
@@ -30,7 +30,7 @@ const sc = scopedClassMaker('example-icon')
         </section>
         <Example3></Example3>
         <section>
-          <h3>关于svg图标</h3>
+          <h2 style={{marginTop:60}}>关于svg图标</h2>
           <p>在本UI中，使用了 SVG 图标替换了原先的 font 图标，从而带来了以下优势：</p>
           <ul style={{listStyleType:"circle",marginLeft:20}}>
               <li><p>完全离线化使用，不需要从 CDN 下载字体文件，图标不会因为网络问题呈现方块，也无需字体文件本地部署。</p></li>
