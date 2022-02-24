@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import Icon from '../icon/icon'
 
@@ -6,43 +6,64 @@ import './message.scss'
 
 import { scopedClassMaker } from "../helpers/classes";
 const sc = scopedClassMaker('assam')
-// const message = ()=>{
-//   return(
-//     <div>1</div>
-//   )
-// }
 
-const body = (string:string,type:string)=>{
-  const component = (
-    <div className={sc({message:true,['message-'+type]:true})}>
+interface message {
+  content : string
+  center ?: true | false
+}
+interface messageProps extends message{
+  type : string
+}
+
+const Box:React.FunctionComponent<messageProps> = (props)=>{
+  const {type,content,center} = props
+  const [visible,setVisible] = useState(false)
+
+  useEffect(()=>{
+    setTimeout(()=>{
+      setVisible(true)
+    },0)
+    setTimeout(()=>{
+      setVisible(false)
+    },3000)
+  },[])
+
+  const style = {
+    opacity:visible ? 1 :0,
+    top:visible ? '5%' : '2%',
+    'justifyContent': center ? 'center' : 'flexstart',
+  }
+  return(
+    <div className={sc({message:true,['message-'+type]:true})} style={style}>
       <Icon name="Chrome" style={{marginRight:10}}/>
-      <span>{string}</span>
+      <span>{content}</span>
     </div>
   )
+}
+
+const body = (option:messageProps)=>{
+  const component = 
+    <Box {...option}/>
   const div = document.createElement('div')
   document.body.append(div)
   ReactDOM.createPortal(div, document.body)
   ReactDOM.render(component,div)
 }
 
+
 let message = {
-  info : (string:string)=>{
-    body(string,'info')
+  info : (option:message)=>{
+    body({...option,type:'info'})
   },
-  success : (string:string)=>{
-    body(string,'success')
+  success : (option:message)=>{
+    body({...option,type:'success'})
   },
-  waring : (string:string)=>{
-    body(string,'waring')
+  waring : (option:message)=>{
+    body({...option,type:'waring'})
   },
-  error : (string:string)=>{
-    body(string,'error')
+  error : (option:message)=>{
+    body({...option,type:'error'})
   }
 }
-
-// message.info('恭喜你，这是一条成功消息')
-// message.success('恭喜你，这是一条成功消息')
-// message.waring('恭喜你，这是一条成功消息')
-// message.error('恭喜你，这是一条成功消息')
 
 export default message
