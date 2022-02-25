@@ -1,15 +1,27 @@
 import React from "react"
 
 import Icon from './icon'
+import message from "../message/message"
+import {copyToClip} from '../helpers/utils'
 
 import { scopedClassMaker } from "../helpers/classes"
 const sc = scopedClassMaker('example-icon')
  const IconExample:React.FunctionComponent = ()=>{
+    const handlClick = (name:string)=>{
+        return (
+            ()=>{
+                copyToClip(`<icon name={${name}}/>  copied`)
+                message.success({
+                    content:`<icon name={${name}}/>  copied`
+                })
+            }
+        )
+    }
     return(
         <ul className={sc('list')}>
-            {["Audit","Diff","FileCopy","FileImage","FileMarkdown","FilePdf","FilePpt","FileText","FileUnknown","FileWord","FileZip","Folder","FolderOpen","Insurance","Like","Lock","Mobile","PropertySafety","SafetyCertificate","SecurityScan","Tablet","Unlike","Unlock","Code","Loading"].map((name)=>{
+            {["Audit","Diff","FileCopy","FileImage","FileMarkdown","FilePdf","FilePpt","FileText","FileUnknown","FileWord","FileZip","Folder","FolderOpen","Insurance","Like","Lock","Mobile","PropertySafety","SafetyCertificate","SecurityScan","Tablet","Unlike","Unlock","Code","Loading","CheckCircle","CloseCircle","WarningCircle"].map((name)=>{
                 return(
-                    <li key={name}>
+                    <li key={name} onClick={handlClick(name)}>
                         <span className={sc('iconBox')}><Icon name={name}/></span>
                         <span>{name}</span>
                     </li>

@@ -35,7 +35,7 @@ const Box:React.FunctionComponent<messageProps> = (props)=>{
   }
   return(
     <div className={sc({message:true,['message-'+type]:true})} style={style}>
-      <Icon name="Chrome" style={{marginRight:10}}/>
+      <Icon name={type == 'success' ? 'CheckCircle' : type == 'waring' ? 'WarningCircle' : 'CloseCircle'} style={{marginRight:10}}/>
       <span>{content}</span>
     </div>
   )
