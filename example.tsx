@@ -16,6 +16,8 @@ import InputExample from './lib/input/input.example'
 import ScrollExample from './lib/scroll/scroll.example'
 import TreeExample from './lib/tree/tree.example'
 import MessageExample from './lib/message/message.example'
+import TooltipExample from './lib/tooltip/tooltip.example'
+import PopverExample from './lib/popver/popver.example'
 
 
 import './example.scss'
@@ -76,6 +78,12 @@ ReactDOM.render((
                         <li>
                             <NavLink to='/message'>Message 全局提示</NavLink>
                         </li>
+                        <li>
+                            <NavLink to='/tooltip'>Tooltip 文字提示</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to='/popver'>Popver 气泡卡片</NavLink>
+                        </li>
                     </ul>
                 </Sider>
                 <Content className='global-content'>
@@ -92,6 +100,8 @@ ReactDOM.render((
 					<Route path="/scroll" component={ScrollExample}/>
 					<Route path="/tree" component={TreeExample}/>
 					<Route path="/message" component={MessageExample}/>
+					<Route path="/tooltip" component={TooltipExample}/>
+					<Route path="/popver" component={PopverExample}/>
                 </Content>
             </Layout>
             <Footer className='global-footer'>
