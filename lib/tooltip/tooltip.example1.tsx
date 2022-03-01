@@ -5,7 +5,8 @@ import Button from "../button/button";
 const TooltipExample1 = ()=>{
   return (
     <Tooltip>
-      <Button>Tooltip will show on mouse enter.</Button>
+      {/* <Button>Tooltip will show on mouse enter.</Button> */}
+      <div>Tooltip will show on mouse enter.</div>
     </Tooltip>
   )
 }
