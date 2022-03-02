@@ -1,4 +1,6 @@
 import React from "react";
+import PopverExample1,{popverExample1_codeString} from "./popver.example1";
+import CodeBox from "../component.example/codeBox";
 
 const PopverExample = ()=>{
   return (
@@ -14,6 +16,13 @@ const PopverExample = ()=>{
               <li><p>和 Tooltip 的区别是，用户可以对浮层上的元素进行操作，因此它可以承载更复杂的内容，比如链接或按钮等</p></li>
           </ul>
       </section>
+
+      <CodeBox
+        title="基本用法。"
+        text='最基本的用法，浮层大小由内容区决定。'
+        egComponent={PopverExample1}
+        code={popverExample1_codeString}
+      />
     </div>
   )
 }
