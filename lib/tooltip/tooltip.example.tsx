@@ -1,7 +1,10 @@
 import React from "react";
 
+import './tooltip.example.scss'
 import CodeBox from "../component.example/codeBox";
+import ApiBox from "../component.example/apiBox";
 import TooltipExample1,{tooltipExample1_codeString} from "./tooltip.example1";
+import TooltipExample2,{tooltipExample2_codeString} from "./tooltip.example2";
 
 const TooltipExample = ()=>{
   return (
@@ -27,9 +30,20 @@ const TooltipExample = ()=>{
         egComponent={TooltipExample1}
         code={tooltipExample1_codeString}
       />
-
+      <CodeBox
+        title="位置。"
+        text='位置支持4个方向。'
+        egComponent={TooltipExample2}
+        code={tooltipExample2_codeString}
+      />
+      <ApiBox data={apiArry}></ApiBox>
     </div>
   )
 }
+
+const apiArry = [
+  {attribute:'placement',content:'气泡框位置，可选 top left right bottom',type:'string',default:'top'},
+  {attribute:'content',content:'浮层内容',type:'string',default:'———'}
+]
 
 export default TooltipExample

@@ -3,19 +3,16 @@ import {useToggle} from '../hooks'
 import Positon from './position'
 
 interface Props{
-  children:ReactElement
+  children:ReactElement,
+  content: string,
+  placement ?: "top"  | "right" | "left" | "bottom"
 }
 
 const tooltip:React.FunctionComponent<Props> = (props)=>{
-  const {children} = props
+  const {children,content,placement} = props
   const {value,expand,collapse} = useToggle(false)
   const targetRef = useRef(null)
 
-  console.log(React.cloneElement(children,{
-    onMouseEnter:expand,
-    onMouseLeave:collapse,
-    ref:targetRef
-  }))
   return (
     <Fragment>
       {React.cloneElement(children,{
@@ -23,10 +20,13 @@ const tooltip:React.FunctionComponent<Props> = (props)=>{
         onMouseLeave:collapse,
         ref:targetRef
       })}
-      {value && <Positon targetref={targetRef}/>}
-
+      {value ? <Positon content={content} targetref={targetRef} placement={placement}/> :''} 
     </Fragment>
   )
 }
+
+tooltip.defaultProps = {
+  placement: 'top',
+};
 
 export default tooltip

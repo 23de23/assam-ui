@@ -37,6 +37,7 @@ const data =[
   {Component:'DatePicker',zIndex:'80'},
   {Component:'Menu',zIndex:'80'},
   {Component:'Popover',zIndex:'90'},
+  {Component:'Tooltip',zIndex:'90'},
   {Component:'Affix',zIndex:'100'},
   {Component:'LightUp',zIndex:'100'},
   {Component:'Message',zIndex:'100'},
