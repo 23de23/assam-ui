@@ -1,12 +1,14 @@
-import React, { MutableRefObject, useLayoutEffect, useRef, useState } from "react";
+import React, { Fragment, MutableRefObject, ReactElement, useLayoutEffect, useRef, useState } from "react";
 import './position.scss'
 import {scopedClassMaker} from '../helpers/classes'
 import ReactDOM from "react-dom";
 const sc = scopedClassMaker('assam-position')
 interface Props{
   targetref:MutableRefObject<Element|null>,
-  content: string,
-  placement ?: "top"  | "right" | "left" | "bottom"
+  content: string | ReactElement,
+  placement ?: "top"  | "right" | "left" | "bottom",
+  title ?:string,
+  type: 'popver' | 'tooltip'
 }
 interface Positionobj{
   left:number,
@@ -17,7 +19,7 @@ interface Positionobj{
 const div = document.createElement('div')
 
 const Position:React.FunctionComponent<Props> = (props)=>{
-  const {targetref,content,placement} = props
+  const {targetref,content,placement,title,type} = props
   const [style,setStyle] = useState({})
   const node = useRef<Element | null | any>(null)
 
@@ -28,6 +30,8 @@ const Position:React.FunctionComponent<Props> = (props)=>{
     const clientPosition = node.current!.getBoundingClientRect()
     const obj = getPositiong(clientTarget,clientPosition,placement)
     setStyle(obj)
+    console.log(clientPosition);
+    
     return ()=>{
       setStyle({...style,opacity:0})
       div.remove()
@@ -35,11 +39,24 @@ const Position:React.FunctionComponent<Props> = (props)=>{
   },[])
 
 
+  const tooltip = <Fragment>{content}</Fragment>
+  const popver = (
+    <Fragment>
+      <div className={sc('popver-title')}>{title}</div>
+      <div className={sc('popver-content')}>{content}</div>
+    </Fragment>
+  )
+
+
   return (
     ReactDOM.createPortal(
-      (<div style={style} ref={node} className={sc({'':true,[placement!]:true})}>
-        <div>{content}</div>
-      </div>)
+      (
+        <div style={style} ref={node} className={sc({'':true,[placement!]:true,[type == 'tooltip' ? 'tooltip' : 'popver']:true})}>
+
+        {type == 'tooltip' ? tooltip : popver}
+
+        </div>
+      )
       ,div)
   )
 }

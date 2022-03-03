@@ -5,7 +5,7 @@ import Positon from './position'
 interface Props{
   children:ReactElement,
   content: string,
-  placement ?: "top"  | "right" | "left" | "bottom"
+  placement ?: "top"  | "right" | "left" | "bottom",
 }
 
 const tooltip:React.FunctionComponent<Props> = (props)=>{
@@ -20,7 +20,7 @@ const tooltip:React.FunctionComponent<Props> = (props)=>{
         onMouseLeave:collapse,
         ref:targetRef
       })}
-      {value && <Positon content={content} targetref={targetRef} placement={placement}/>} 
+      {value && <Positon content={content} targetref={targetRef} placement={placement} type='tooltip'/>} 
       {/* <Positon content={content} targetref={targetRef} placement={placement}/> */}
     </Fragment>
   )
