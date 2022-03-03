@@ -24,13 +24,18 @@
       border-radius: 4px;
     }
     .code-icon{
-      width: 24px;
-      height: 24px;
+      width: 20px;
+      height: 20px;
       position: absolute;
-      right: 12px;
-      bottom: 18px;
+      top: 50%;
+      right: 20px;
       cursor: pointer;
       fill: #555555;
+      svg{
+        width: 100%;
+        height: 100%;
+        transform: translate(0,-50%);
+      }
     }
   }
 }

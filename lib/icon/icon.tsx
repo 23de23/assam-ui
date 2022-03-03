@@ -10,14 +10,14 @@ interface IconProps extends React.SVGAttributes<SVGElement> {
 
 
 // React.FunctionComponent<IconProps> 定义类型react函数类组件 并且参数要求为接口 iconProps
-const  Icon: React.FunctionComponent<IconProps> = (props) => {
+const Icon = React.forwardRef<unknown, IconProps>((props, ref:any) => {
     const {className,name,...restProps} = props
     return (
-        <svg className={classes('assam-icon',className)} {...restProps}>
+        <svg ref={ref} className={classes('assam-icon',className)} {...restProps}>
             <use xlinkHref={`#${name}`}/>
         </svg>
     )
-}
+})
 
 export default Icon
 

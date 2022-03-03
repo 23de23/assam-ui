@@ -20,7 +20,8 @@ const tooltip:React.FunctionComponent<Props> = (props)=>{
         onMouseLeave:collapse,
         ref:targetRef
       })}
-      {value ? <Positon content={content} targetref={targetRef} placement={placement}/> :''} 
+      {value && <Positon content={content} targetref={targetRef} placement={placement}/>} 
+      {/* <Positon content={content} targetref={targetRef} placement={placement}/> */}
     </Fragment>
   )
 }

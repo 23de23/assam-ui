@@ -46,7 +46,6 @@ const body = (option:messageProps)=>{
     <Box {...option}/>
   const div = document.createElement('div')
   document.body.append(div)
-  ReactDOM.createPortal(div, document.body)
   ReactDOM.render(component,div)
 }
 

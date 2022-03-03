@@ -3,8 +3,12 @@
   color: #ffffff;
   border-radius: 4px;
   padding: 8px 4px;
-  position:absolute;
+  position:fixed;
   z-index: 80;
+  min-width: 20px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: all .3s ease-in-out;
 }
 
 .assam-position-top{

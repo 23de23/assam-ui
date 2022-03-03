@@ -2,6 +2,7 @@ import React, { FunctionComponent, useState } from 'react'
 
 import Icon from "../icon/icon"
 import CodeVisible from './/codeVIsible'
+import Tooltip from '../tooltip/tooltip'
 
 
 import './codeBox.scss'
@@ -28,7 +29,9 @@ const CodeBox:React.FunctionComponent<Props> = (props)=>{
           <div>
               {props.text}
               <div className="code-icon" onClick={onVisibleCode}>
+                <Tooltip content={visible ? 'hide code' : 'show code'}>
                   <Icon name='Code'></Icon>
+                </Tooltip>
               </div>              
           </div>
       </div>
