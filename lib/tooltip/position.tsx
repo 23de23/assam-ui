@@ -30,6 +30,8 @@ const Position:React.FunctionComponent<Props> = (props)=>{
     const clientPosition = node.current!.getBoundingClientRect()
     const obj = getPositiong(clientTarget,clientPosition,placement)
     setStyle(obj)
+    console.log(obj);
+    
     console.log(clientPosition);
     
     return ()=>{
@@ -77,9 +79,9 @@ function getPositiong (clientTarget: DOMRect,clientPosition: { height: number; w
     obj.left = clientTarget.left - clientPosition.width -14
   }else if(placement == 'right'){
     obj.top = clientTarget.top + clientTarget.height/2
-    obj.left = clientTarget.left + clientPosition.width +14
+    obj.left = clientTarget.left + clientTarget.width +14
   }else if(placement == 'bottom'){
-    obj.top = clientTarget.top + clientPosition.height + 14
+    obj.top = clientTarget.top + clientTarget.height +14
     obj.left = clientTarget.left + (clientTarget.right - clientTarget.left)/2
   }
 

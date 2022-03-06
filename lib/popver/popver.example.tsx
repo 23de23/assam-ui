@@ -1,6 +1,9 @@
 import React from "react";
 import PopverExample1,{popverExample1_codeString} from "./popver.example1";
+import PopverExample2,{popverExample2_codeString} from "./popver.example2";
+import PopverExample3,{popverExample3_codeString} from "./popver.example3";
 import CodeBox from "../component.example/codeBox";
+import './popver.example.scss'
 
 const PopverExample = ()=>{
   return (
@@ -22,6 +25,18 @@ const PopverExample = ()=>{
         text='最基本的用法，浮层大小由内容区决定。'
         egComponent={PopverExample1}
         code={popverExample1_codeString}
+      />
+      <CodeBox
+        title="位置。"
+        text='位置支持4个方向。'
+        egComponent={PopverExample2}
+        code={popverExample2_codeString}
+      />
+      <CodeBox
+        title="触发方式。"
+        text='支持 hover, click, focus 三种触发方式。'
+        egComponent={PopverExample3}
+        code={popverExample3_codeString}
       />
     </div>
   )

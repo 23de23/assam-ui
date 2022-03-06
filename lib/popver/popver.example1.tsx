@@ -21,7 +21,17 @@ const PopverExample1 = ()=>{
 
 
 const popverExample1_codeString = `
-123
+          const content = (
+            <div>
+              <p>content</p>
+              <p>content</p>
+              <p>content</p>
+            </div>
+          )
+
+          <Popover content={content} title='title'>
+          <Button>Hover me</Button>
+          </Popover>
 `
 
 export {popverExample1_codeString}
