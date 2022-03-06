@@ -4,7 +4,7 @@ import {scopedClassMaker} from '../helpers/classes'
 import ReactDOM from "react-dom";
 const sc = scopedClassMaker('assam-position')
 interface Props{
-  targetref:MutableRefObject<Element|null>,
+  targetref:MutableRefObject<HTMLElement | null>,
   content: string | ReactElement,
   placement ?: "top"  | "right" | "left" | "bottom",
   title ?:string,
@@ -21,18 +21,17 @@ const div = document.createElement('div')
 const Position:React.FunctionComponent<Props> = (props)=>{
   const {targetref,content,placement,title,type} = props
   const [style,setStyle] = useState({})
-  const node = useRef<Element | null | any>(null)
+  const node = useRef(null)
 
   useLayoutEffect(()=>{
+
     document.body.append(div)
 
-    const clientTarget = targetref.current!.getBoundingClientRect()
-    const clientPosition = node.current!.getBoundingClientRect()
-    const obj = getPositiong(clientTarget,clientPosition,placement)
+    const targetHtml = targetref.current!
+    const positionHtml = node.current!
+    const obj = getPositiong(targetHtml,positionHtml,placement)
     setStyle(obj)
-    console.log(obj);
     
-    console.log(clientPosition);
     
     return ()=>{
       setStyle({...style,opacity:0})
@@ -65,27 +64,27 @@ const Position:React.FunctionComponent<Props> = (props)=>{
 export default Position
 
 
-function getPositiong (clientTarget: DOMRect,clientPosition: { height: number; width: number; },placement: string | undefined){
+function getPositiong (targetHtml: HTMLElement ,positionHtml: HTMLElement,placement: string | undefined){
   let obj:Positionobj = {
     opacity:1,
     left:0,
     top:0,
   }
+  
   if(placement == 'top'){
-    obj.top = clientTarget.y - clientPosition.height - 14
-    obj.left = clientTarget.left + (clientTarget.right - clientTarget.left)/2
+    obj.top = targetHtml.offsetTop - positionHtml.offsetHeight -14
+    obj.left = targetHtml.offsetLeft + targetHtml.offsetWidth/2
   }else if(placement == 'left'){
-    obj.top = clientTarget.top + clientTarget.height/2
-    obj.left = clientTarget.left - clientPosition.width -14
+    obj.top = targetHtml.offsetTop + targetHtml.offsetHeight/2
+    obj.left = targetHtml.offsetLeft - positionHtml.offsetWidth -14
   }else if(placement == 'right'){
-    obj.top = clientTarget.top + clientTarget.height/2
-    obj.left = clientTarget.left + clientTarget.width +14
+    obj.top = targetHtml.offsetTop + targetHtml.offsetHeight/2
+    obj.left = targetHtml.offsetLeft + targetHtml.offsetWidth +14
   }else if(placement == 'bottom'){
-    obj.top = clientTarget.top + clientTarget.height +14
-    obj.left = clientTarget.left + (clientTarget.right - clientTarget.left)/2
+    obj.top = targetHtml.offsetTop + targetHtml.offsetHeight +14
+    obj.left = targetHtml.offsetLeft + targetHtml.offsetWidth/2
   }
 
-  console.log(obj);
   
   return obj
 }

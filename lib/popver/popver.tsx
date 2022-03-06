@@ -15,7 +15,7 @@ interface Props{
 const Popver:React.FunctionComponent<Props> = (props)=>{
   const {children,content,placement,title,trigger} = props
   const {value,expand,collapse} = useToggle(false)
-  const targetRef = useRef(null)
+  const targetRef = useRef<HTMLElement | null>(null)
 
   const clickPropver = ()=>{
     expand()
@@ -43,7 +43,7 @@ const Popver:React.FunctionComponent<Props> = (props)=>{
   return (
     <Fragment>
       {React.cloneElement(children,cloneProp())}
-      {value && <Positon content={content} targetref={targetRef} placement={placement} title={title} type='popver'/> }
+      {value && <Positon content={content} targetref={targetRef!} placement={placement} title={title} type='popver'/> }
       {/* {<Positon content={content} targetref={targetRef} placement={placement} title={title} type='popver'/>} */}
     </Fragment>
   )
