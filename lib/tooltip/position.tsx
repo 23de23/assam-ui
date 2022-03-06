@@ -52,10 +52,13 @@ const Position:React.FunctionComponent<Props> = (props)=>{
   return (
     ReactDOM.createPortal(
       (
-        <div style={style} ref={node} className={sc({'':true,[placement!]:true,[type == 'tooltip' ? 'tooltip' : 'popver']:true})}>
+        <div style={style} ref={node} className={sc({'':true,[placement!]:true})}>
 
-        {type == 'tooltip' ? tooltip : popver}
+          <div   className={sc({'content':true,[placement!]:true,[type == 'tooltip' ? 'tooltip' : 'popver']:true})}>
 
+          {type == 'tooltip' ? tooltip : popver}
+
+          </div>
         </div>
       )
       ,div)
@@ -72,16 +75,16 @@ function getPositiong (targetHtml: HTMLElement ,positionHtml: HTMLElement,placem
   }
   
   if(placement == 'top'){
-    obj.top = targetHtml.offsetTop - positionHtml.offsetHeight -14
+    obj.top = targetHtml.offsetTop - positionHtml.offsetHeight
     obj.left = targetHtml.offsetLeft + targetHtml.offsetWidth/2
   }else if(placement == 'left'){
     obj.top = targetHtml.offsetTop + targetHtml.offsetHeight/2
-    obj.left = targetHtml.offsetLeft - positionHtml.offsetWidth -14
+    obj.left = targetHtml.offsetLeft - positionHtml.offsetWidth
   }else if(placement == 'right'){
     obj.top = targetHtml.offsetTop + targetHtml.offsetHeight/2
-    obj.left = targetHtml.offsetLeft + targetHtml.offsetWidth +14
+    obj.left = targetHtml.offsetLeft + targetHtml.offsetWidth
   }else if(placement == 'bottom'){
-    obj.top = targetHtml.offsetTop + targetHtml.offsetHeight +14
+    obj.top = targetHtml.offsetTop + targetHtml.offsetHeight
     obj.left = targetHtml.offsetLeft + targetHtml.offsetWidth/2
   }
 
