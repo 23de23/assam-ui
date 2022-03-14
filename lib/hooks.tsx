@@ -11,7 +11,7 @@ const useUpdate = (dep:boolean,fn:()=> void) => {
   }, [dep])
 }
 
-const useToggle = (initialValue:boolean) => {
+const useToggle = (initialValue:boolean) :[Boolean,Function,Function] => {
   const [expanded, setExpanded] = useState(initialValue)
 
   const expand = () => {
@@ -22,11 +22,7 @@ const useToggle = (initialValue:boolean) => {
     setExpanded(false)
   }
 
-  return {
-    value: expanded,
-    expand,
-    collapse
-  }
+  return [expanded, expand, collapse]
 }
 
 export default useUpdate

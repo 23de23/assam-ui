@@ -1,4 +1,4 @@
-import React, { Fragment, MutableRefObject, ReactElement, useLayoutEffect, useRef, useState } from "react";
+import React, { Fragment, MouseEventHandler, MutableRefObject, ReactElement, useLayoutEffect, useRef, useState } from "react";
 import './position.scss'
 import {scopedClassMaker} from '../helpers/classes'
 import ReactDOM from "react-dom";
@@ -9,8 +9,8 @@ interface Props{
   placement ?: "top"  | "right" | "left" | "bottom",
   title ?:string,
   type: 'popver' | 'tooltip',
-  handNodeLeave: any,
-  handNodeEnter:any
+  handNodeLeave: MouseEventHandler<HTMLDivElement>,
+  handNodeEnter: MouseEventHandler<HTMLDivElement>,
 }
 interface Positionobj{
   left:number,
@@ -18,11 +18,12 @@ interface Positionobj{
   opacity:number
 }
 
-const div = document.createElement('div')
+
 
 const Position:React.FunctionComponent<Props> = (props)=>{
   const {targetref,content,placement,title,type} = props
   const [style,setStyle] = useState({})
+  const [div,setDiv] = useState(document.createElement('div'))
   const node = useRef(null)
 
   useLayoutEffect(()=>{

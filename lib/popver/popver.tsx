@@ -1,4 +1,4 @@
-import React, { Fragment, ReactElement, useRef, useState } from "react";
+import React, { Fragment, ReactElement, useLayoutEffect, useRef, useState } from "react";
 import {useToggle} from '../hooks'
 import Positon from '../tooltip/position'
 import './popver.scss'
@@ -14,46 +14,46 @@ interface Props{
 
 const Popver:React.FunctionComponent<Props> = (props)=>{
   const {children,content,placement,title,trigger} = props
-  const {value,expand,collapse} = useToggle(false)
+  const [value,expand,collapse] = useToggle(false)
   const targetRef = useRef<HTMLElement | null>(null)
 
-  const [clickState,setClickState] = useState(false)
+  const [leavePosition,setLeavePosition] = useState(false)
 
-  const handNodeLeave = ()=>{
-    if(trigger == 'hover'){
-      collapsePosition()
-    }else if(trigger == 'focus'){
-
-    }else if(trigger == 'click'){
-
-    }
-  }
   const handNodeEnter = ()=>{
-    expandPosition()
-    if(trigger == 'click'){
-      setClickState(true)
-      document.body.addEventListener('click',()=>{
-        if(!clickState){
-          collapsePosition()
-        }
-      })
+      setLeavePosition(false)
+      if(trigger == 'hover') expand()
+  }
+  const handNodeLeave = ()=>{
+      setLeavePosition(true)
+      if(trigger == 'hover') collapse()
+  }
+  const handNodeClick = () => {
+    if(!value){
+      expand()
+      setLeavePosition(false)
+    }else{
+      collapse()
     }
   }
 
+  useLayoutEffect(()=>{
+    if(trigger != 'click') return
+    window.addEventListener('click',windowClick)
+    return ()=>{
+      window.removeEventListener('click',windowClick)
+    }
+  },[leavePosition])
 
-  const expandPosition = ()=>{
-    console.log('click')
-    expand()
-  }
-  const collapsePosition = ()=>{
-    collapse()
+  function windowClick(){
+    if(trigger != 'click') return
+    if(leavePosition) collapse()
   }
 
   function cloneProp(){
     let obj = {}
     if(trigger == 'hover'){
       obj = {
-        onMouseEnter:expandPosition,
+        onMouseEnter:handNodeEnter,
         onMouseLeave:handNodeLeave,
         ref:targetRef
       }
@@ -61,8 +61,7 @@ const Popver:React.FunctionComponent<Props> = (props)=>{
         console.log(111);
     }else if(trigger == 'click'){
       obj = {
-        onClick:expandPosition,
-        onMouseLeave:handNodeLeave,
+        onClick:handNodeClick,
         ref:targetRef
       }
     }
