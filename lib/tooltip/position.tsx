@@ -8,7 +8,9 @@ interface Props{
   content: string | ReactElement,
   placement ?: "top"  | "right" | "left" | "bottom",
   title ?:string,
-  type: 'popver' | 'tooltip'
+  type: 'popver' | 'tooltip',
+  handNodeLeave: any,
+  handNodeEnter:any
 }
 interface Positionobj{
   left:number,
@@ -24,9 +26,7 @@ const Position:React.FunctionComponent<Props> = (props)=>{
   const node = useRef(null)
 
   useLayoutEffect(()=>{
-
     document.body.append(div)
-
     const targetHtml = targetref.current!
     const positionHtml = node.current!
     const obj = getPositiong(targetHtml,positionHtml,placement)
@@ -52,7 +52,7 @@ const Position:React.FunctionComponent<Props> = (props)=>{
   return (
     ReactDOM.createPortal(
       (
-        <div style={style} ref={node} className={sc({'':true,[placement!]:true})}>
+        <div style={style} onMouseEnter={props.handNodeEnter} onMouseLeave={props.handNodeLeave} ref={node} className={sc({'':true,[placement!]:true})}>
 
           <div   className={sc({'content':true,[placement!]:true,[type == 'tooltip' ? 'tooltip' : 'popver']:true})}>
 
