@@ -37,6 +37,11 @@ const TooltipExample = ()=>{
         code={tooltipExample2_codeString}
       />
       <ApiBox data={apiArry}></ApiBox>
+
+      <section>
+        <h2>注意</h2>
+        <p>请确保 Popover 的子元素能接受 onMouseEnter、onMouseLeave、onFocus、onBlur、onClick 事件。</p>
+      </section>
     </div>
   )
 }
