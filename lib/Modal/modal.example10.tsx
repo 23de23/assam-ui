@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from "react"
 
-import Dialog,{alert,confirm, modal} from "./dialog"
+import Dialog,{alert,confirm, modal} from "./modal"
 
-export default function(){
+const ModalExample1 = ()=>{
   const [X, setX] = useState(false)
   const [Y, setY] = useState(false)
 
@@ -45,3 +45,9 @@ export default function(){
     
   )
 }
+
+
+const ModalExample10_codeString = `13123`
+
+export default ModalExample1
+export{ModalExample10_codeString}

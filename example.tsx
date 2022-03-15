@@ -7,7 +7,7 @@ import StartUsing from "./lib/page.example/startUsing"
 import ColorMatching from "./lib/page.example/colorMatching"
 import ZIndex from "./lib/page.example/zIndx"
 import IconExample from './lib/icon/icon.example'
-import DialogExample from './lib/dialog/dialog.Example'
+import ModalExample from './lib/modal/modal.Example'
 import ButtonExample from './lib/button/button.example'
 import FormExample from './lib/form/form.example'
 import LayoutExample from './lib/layout/layout.example'
@@ -61,7 +61,7 @@ ReactDOM.render((
                             <NavLink to='/input'>Input 输入框</NavLink>
                         </li>
                         <li>
-                            <NavLink to='/dialog'>Dialog 弹出框</NavLink>
+                            <NavLink to='/dialog'>Modal 对话框</NavLink>
                         </li>
                         <li>
                             <NavLink to='/layout'>Layout 布局</NavLink>
@@ -93,7 +93,7 @@ ReactDOM.render((
 					<Route path="/zIndex" component={ZIndex}/>
 					<Route path="/icon" component={IconExample}/>
 					<Route path="/button" component={ButtonExample}/>
-					<Route path="/dialog" component={DialogExample}/>
+					<Route path="/dialog" component={ModalExample}/>
 					<Route path="/Layout" component={LayoutExample}/>
 					<Route path="/Form" component={FormExample}/>
 					<Route path="/Input" component={InputExample}/>

@@ -19,7 +19,7 @@ const sc = scopedClassMaker('example-icon')
     }
     return(
         <ul className={sc('list')}>
-            {["Audit","Diff","FileCopy","FileImage","FileMarkdown","FilePdf","FilePpt","FileText","FileUnknown","FileWord","FileZip","Folder","FolderOpen","Insurance","Like","Lock","Mobile","PropertySafety","SafetyCertificate","SecurityScan","Tablet","Unlike","Unlock","Code","Loading","CheckCircle","CloseCircle","WarningCircle"].map((name)=>{
+            {["Audit","Diff","FileCopy","FileImage","FileMarkdown","FilePdf","FilePpt","FileText","FileUnknown","FileWord","FileZip","Folder","FolderOpen","Insurance","Like","Lock","Mobile","PropertySafety","SafetyCertificate","SecurityScan","Tablet","Unlike","Unlock","Code","Loading","CheckCircle","CloseCircle","WarningCircle","Close"].map((name)=>{
                 return(
                     <li key={name} onClick={handlClick(name)}>
                         <span className={sc('iconBox')}><Icon name={name}/></span>

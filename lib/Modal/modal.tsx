@@ -2,9 +2,11 @@ import React, {Fragment, ReactElement, ReactNode } from "react"
 
 
 import { Icon } from "../index"
+import Button from "../button/button"
+
 import {scopedClassMaker} from '../helpers/classes'
 
-import './dialog.scss'
+import './modal.scss'
 import ReactDOM from "react-dom"
 
 interface dialogProps {
@@ -39,7 +41,7 @@ const Dialog: React.FunctionComponent<dialogProps> = (props) => {
       </div>
       <div className={sc('')}>
         <div className={sc('close')} onClick={onClickClose}>
-          <Icon name='close'/>
+          <Icon name='Close'/>
         </div>
         <header className={sc('header')}>
           提示
@@ -83,7 +85,7 @@ const modal = (content:ReactNode,footer?:Array<React.ReactElement>,afterClose?:(
 }
 
 const alert = (content:string)=>{
-  const footer = [<button onClick={()=>{close()}}>确定</button>]
+  const footer = [<Button level="important" onClick={()=>{close()}}>知道了</Button>]
   const close = modal(content,footer)
 }
 
