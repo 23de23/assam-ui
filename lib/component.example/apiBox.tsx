@@ -8,6 +8,7 @@ interface Props{
 const ApiBox:React.FunctionComponent<Props> = (props)=>{
   return(
     <div>
+      <h2 style={{color: "#0d1a26",paddingTop: '20px'}}>Options</h2>
       <table className='apiBox'>
         <thead>
           <tr>

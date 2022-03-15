@@ -12,6 +12,8 @@ const apiArry = [
   {attribute:'showIcon',content:'是否显示默认的提示 Icon 图标',type:"boolean",default:"true"},
   {attribute:'onClose',content:'消息完全关闭（离场动画结束）时的回调',type:"() => any",default:"——"},
   {attribute:'center',content:'文字是否居中',type:"boolean",default:"false"},
+  {attribute:'className',content:'自定义 Message 类名',type:'string',default:'———'},
+  {attribute:'style',content:'自定义 Message 样式',type:'React.CSSProperties',default:'———'},
 ]
 
 const MessageExample = ()=>{

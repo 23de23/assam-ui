@@ -58,6 +58,8 @@ const apiArry = [
   {attribute:'trigger',content:'触发行为，可选 hover | focus | click',type:'string',default:'hover'},
   {attribute:'visible',content:'用于手动控制浮层显隐',type:'boolean',default:'false'},
   {attribute:'onVisibleChange',content:'显示隐藏的回调',type:'(visible) => void',default:'———'},
+  {attribute:'className',content:'自定义 Message 类名',type:'string',default:'———'},
+  {attribute:'style',content:'自定义 Message 样式',type:'React.CSSProperties',default:'———'},
 ]
 
 

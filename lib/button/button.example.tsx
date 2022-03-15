@@ -22,6 +22,8 @@ const apiArry = [
                     {attribute:'ghost',content:'幽灵按钮',type:"boolean",default:"false"},
                     {attribute:'className',content:'自定义 Button 类名',type:"string",default:"——"},
                     {attribute:'style',content:'自定义 Button 样式',type:"React.CSSProperties",default:"——"},
+                    {attribute:'className',content:'自定义 Message 类名',type:'string',default:'———'},
+                    {attribute:'style',content:'自定义 Message 样式',type:'React.CSSProperties',default:'———'},
                 ]
 
  const ButtonExample:React.FunctionComponent = ()=>{

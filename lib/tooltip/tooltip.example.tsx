@@ -43,7 +43,9 @@ const TooltipExample = ()=>{
 
 const apiArry = [
   {attribute:'placement',content:'气泡框位置，可选 top left right bottom',type:'string',default:'top'},
-  {attribute:'content',content:'浮层内容',type:'string',default:'———'}
+  {attribute:'content',content:'浮层内容',type:'string',default:'———'},
+  {attribute:'className',content:'自定义 Message 类名',type:'string',default:'———'},
+  {attribute:'style',content:'自定义 Message 样式',type:'React.CSSProperties',default:'———'},
 ]
 
 export default TooltipExample
