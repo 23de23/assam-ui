@@ -1,27 +1,37 @@
-.example-header{
-    height: 40px;
-    margin: 4px 0;
-    background-color: #7dbcea;
-}
+.example-layout{
+    .example-header{
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #7dbcea;
+        color: #fff;
+    }
 
-.example-content{
-    margin: 4px 0;
-    background-color: rgba(16, 142, 233, 1);
-}
+    .example-content{
+        height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(16, 142, 233, 1);
+        color: #fff;
+    }
 
-.example-footer{
-    height: 100px;
-    margin: 4px 0;
-    background-color: #7dbcea;
-}
+    .example-footer{
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #7dbcea;
+        color: #fff;
+    }
 
-.example-sider{
-    width: 40px;
-    margin: 4px 0;
-    background-color: #3ba0e9;
-}
-
-// 旁边选择器
-.example-sider + .example-content,.example-content + .example-sider,.example-sider + .assam-layout{
-    margin-left: 4px;
+    .example-sider{
+        width: 20%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #3ba0e9;
+        color: #fff;
+    }
 }

@@ -1,51 +1,39 @@
 import React from "react";
-import Content from "./content";
-import Footer from "./footer";
-import Header from "./header";
-import Layout from "./layout";
-import Sider from "./sider";
+import LayoutExample1, {LayoutExample1_codeString} from './layout.example1'
+import CodeBox from "../component.example/codeBox"
 
 import './layout.example.scss'
 
+import { scopedClassMaker } from "../helpers/classes"
+const sc = scopedClassMaker('example-layout')
+
 const  LayoutExample = () => {
   return(
-    <div>
-      <h1>layout第一个案例</h1>
-      <Layout style={{height:500,width:500}}>
-        <Header className='example-header'>Header</Header>
-        <Content className='example-content'>Content</Content>
-        <Footer className='example-footer'>Footer</Footer>
-      </Layout>
-
-      <h1>layout第二个案例</h1>
-      <Layout style={{height:500,width:500}}>
-        <Header className='example-header'>Header</Header>
-        <Layout>
-          <Sider className='example-sider'>Sider</Sider>
-          <Content className='example-content'>Content</Content>
-        </Layout>
-        <Footer className='example-footer'>Footer</Footer>
-      </Layout>
-
-      <h1>layout第三个案例</h1>
-      <Layout style={{height:500,width:500}}>
-        <Header className='example-header'>Header</Header>
-        <Layout>
-          <Content className='example-content'>Content</Content>
-          <Sider className='example-sider'>Sider</Sider>
-        </Layout>
-        <Footer className='example-footer'>Footer</Footer>
-      </Layout>
-
-      <h1>layout第四个案例</h1>
-      <Layout style={{height:500,width:500}}>
-        <Sider className='example-sider'>Sider</Sider>
-        <Layout>
-          <Header className='example-header'>Header</Header>
-          <Content className='example-content'>Content</Content>
-          <Footer className='example-footer'>Footer</Footer>
-        </Layout>
-      </Layout>
+    <div className={sc('')}>
+      <section>
+          <h1>Layout 布局</h1>
+          <p>协助进行页面级整体布局。</p>
+      </section>
+      <section>
+          <h2>组件概述</h2>
+          <ul style={{listStyleType:"circle",marginLeft:20}}>
+              <li><p>Layout：布局容器，其下可嵌套 Header Sider Content Footer 或 Layout 本身，可以放在任何父容器中。</p></li>
+              <li><p>Header：顶部布局，自带默认样式，其下可嵌套任何元素，只能放在 Layout 中。</p></li>
+              <li><p>Sider：侧边栏，自带默认样式及基本功能，其下可嵌套任何元素，只能放在 Layout 中。</p></li>
+              <li><p>Content：内容部分，自带默认样式，其下可嵌套任何元素，只能放在 Layout 中。</p></li>
+              <li><p>Footer：底部布局，自带默认样式，其下可嵌套任何元素，只能放在 Layout 中。</p></li>
+              <li><p>注意：采用 flex 布局实现，请注意浏览器兼容性问题。</p></li>
+          </ul>
+      </section>
+      <section>
+          <h2>代码演示</h2>
+      </section>
+      <CodeBox
+          title="基本结构"
+          text="典型的页面布局。"
+          egComponent={LayoutExample1}
+          code={LayoutExample1_codeString}
+      />
     </div>
   )
 }

@@ -1,8 +1,9 @@
 .assam-layout{
   display: flex;
   flex-direction: column;
+  width: 100%;
   &.hasSider{
-    flex-direction: row;
+    flex-direction: row !important;
     .assam-layout {
       flex-direction: column;
     }
