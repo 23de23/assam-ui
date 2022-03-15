@@ -17,7 +17,7 @@ import ScrollExample from './lib/scroll/scroll.example'
 import TreeExample from './lib/tree/tree.example'
 import MessageExample from './lib/message/message.example'
 import TooltipExample from './lib/tooltip/tooltip.example'
-import PopverExample from './lib/popver/popver.example'
+import PopverExample from './lib/popover/popover.example'
 
 
 import './example.scss'

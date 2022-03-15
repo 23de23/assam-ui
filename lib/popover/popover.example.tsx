@@ -1,9 +1,11 @@
 import React from "react";
-import PopverExample1,{popverExample1_codeString} from "./popver.example1";
-import PopverExample2,{popverExample2_codeString} from "./popver.example2";
-import PopverExample3,{popverExample3_codeString} from "./popver.example3";
+import PopverExample1,{popverExample1_codeString} from "./popover.example1";
+import PopverExample2,{popverExample2_codeString} from "./popover.example2";
+import PopverExample3,{popverExample3_codeString} from "./popover.example3";
+import PopverExample4,{popverExample4_codeString} from "./popover.example4";
 import CodeBox from "../component.example/codeBox";
-import './popver.example.scss'
+import ApiBox from "../component.example/apiBox";
+import './popover.example.scss'
 
 const PopverExample = ()=>{
   return (
@@ -38,9 +40,25 @@ const PopverExample = ()=>{
         egComponent={PopverExample3}
         code={popverExample3_codeString}
       />
+      <CodeBox
+        title="从浮层内关闭。"
+        text='使用 visible 属性控制浮层显示。'
+        egComponent={PopverExample4}
+        code={popverExample4_codeString}
+      />
+      <ApiBox data={apiArry}></ApiBox>
     </div>
   )
 }
+
+const apiArry = [
+  {attribute:'title ',content:'标题',type:'string | ReactNode | () => ReactNode',default:'———'},
+  {attribute:'content',content:'浮层内容',type:'string | ReactNode | () => ReactNode',default:'———'},
+  {attribute:'placement',content:'气泡框位置，可选 top left right bottom',type:'string',default:'top'},
+  {attribute:'trigger',content:'触发行为，可选 hover | focus | click',type:'string',default:'hover'},
+  {attribute:'visible',content:'用于手动控制浮层显隐',type:'boolean',default:'false'},
+  {attribute:'onVisibleChange',content:'显示隐藏的回调',type:'(visible) => void',default:'———'},
+]
 
 
 export default PopverExample

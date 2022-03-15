@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../button/button";
-import Popover from './popver'
+import Popover from './popover'
 
 const PopverExample1 = ()=>{
 

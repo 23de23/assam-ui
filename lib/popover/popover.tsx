@@ -1,19 +1,21 @@
-import React, { Fragment, ReactElement, useLayoutEffect, useRef, useState } from "react";
+import React, { Fragment, ReactElement, useEffect, useLayoutEffect, useRef, useState } from "react";
 import {useToggle} from '../hooks'
-import Positon from '../tooltip/position'
-import './popver.scss'
+import Positon from '../component/position/position'
+import './popover.scss'
 
 
 interface Props{
   children:ReactElement,
   content: string | ReactElement,
   placement ?: "top"  | "right" | "left" | "bottom",
-  title:string,
-  trigger?:'hover' | 'focus' | 'click'
+  title: string,
+  trigger?: 'hover' | 'focus' | 'click',
+  visible?: true | false,
+  onVisibleChange?: Function
 }
 
 const Popver:React.FunctionComponent<Props> = (props)=>{
-  const {children,content,placement,title,trigger} = props
+  const {children,content,placement,title,trigger,visible,onVisibleChange} = props
   const [value,expand,collapse] = useToggle(false)
   const targetRef = useRef<HTMLElement | null>(null)
 
@@ -35,6 +37,13 @@ const Popver:React.FunctionComponent<Props> = (props)=>{
       collapse()
     }
   }
+
+  useEffect(()=>{
+    if(visible){
+      collapse()
+      onVisibleChange && onVisibleChange(false)
+    }
+  },[visible])
 
   useLayoutEffect(()=>{
     if(trigger != 'click') return
@@ -58,7 +67,11 @@ const Popver:React.FunctionComponent<Props> = (props)=>{
         ref:targetRef
       }
     }else if(trigger == 'focus'){
-        console.log(111);
+      obj = {
+        onFocus:expand,
+        onBlur:collapse,
+        ref:targetRef
+      }
     }else if(trigger == 'click'){
       obj = {
         onClick:handNodeClick,
@@ -71,14 +84,14 @@ const Popver:React.FunctionComponent<Props> = (props)=>{
   return (
     <Fragment>
       {React.cloneElement(children,cloneProp())}
-      {value && <Positon content={content} 
-                 targetref={targetRef!} 
-                 placement={placement} 
-                 handNodeLeave={handNodeLeave} 
-                 handNodeEnter={handNodeEnter} 
-                 title={title} 
-                 type='popver'/> }
-      {/* {<Positon content={content} targetref={targetRef} placement={placement} title={title} type='popver'/>} */}
+      {value && <Positon 
+                  content={content} 
+                  targetref={targetRef!} 
+                  placement={placement} 
+                  handNodeLeave={handNodeLeave} 
+                  handNodeEnter={handNodeEnter} 
+                  title={title} 
+                  type='popver'/> }
     </Fragment>
   )
 }

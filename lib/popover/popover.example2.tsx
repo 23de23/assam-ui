@@ -1,5 +1,5 @@
 import React from "react";
-import Popover from './popver'
+import Popover from './popover'
 import Button from "../button/button";
 
 
@@ -11,23 +11,26 @@ const content = (
   </div>
 )
 
-const PopverExample3 = ()=>{
+const PopverExample2 = ()=>{
   return (
     <div className="popverExample2">
-        <Popover content={content} title='title' trigger='hover'>
-          <Button>hover me</Button>
+        <Popover content={content} title='title'>
+          <Button>top</Button>
         </Popover>
-        <Popover content={content}  title='title' trigger='focus'>
-          <Button>focus me</Button>
+        <Popover content={content} placement='left' title='title'>
+          <Button>left</Button>
         </Popover>
-        <Popover content={content}  title='title' trigger='click'>
-          <Button>click me</Button>
+        <Popover content={content} placement='right' title='title'>
+          <Button>right</Button>
+        </Popover>
+        <Popover content={content} placement='bottom' title='title'>
+          <Button>buttom</Button>
         </Popover>
     </div>
   )
 }
 
-const popverExample3_codeString = `
+const popverExample2_codeString = `
         const content = (
           <div>
             <p>content</p>
@@ -50,5 +53,5 @@ const popverExample3_codeString = `
       </Popover>
 `
 
-export default PopverExample3
-export {popverExample3_codeString}
+export default PopverExample2
+export {popverExample2_codeString}

@@ -1,13 +1,13 @@
 import React, { Fragment, MouseEventHandler, MutableRefObject, ReactElement, useLayoutEffect, useRef, useState } from "react";
 import './position.scss'
-import {scopedClassMaker} from '../helpers/classes'
+import {scopedClassMaker} from '../../helpers/classes'
 import ReactDOM from "react-dom";
 const sc = scopedClassMaker('assam-position')
 interface Props{
   targetref:MutableRefObject<HTMLElement | null>,
   content: string | ReactElement,
   placement ?: "top"  | "right" | "left" | "bottom",
-  title ?:string,
+  title ?:string | ReactElement,
   type: 'popver' | 'tooltip',
   handNodeLeave: MouseEventHandler<HTMLDivElement>,
   handNodeEnter: MouseEventHandler<HTMLDivElement>,
