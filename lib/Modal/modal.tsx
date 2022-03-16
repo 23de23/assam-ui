@@ -1,4 +1,4 @@
-import React, {Fragment, ReactElement, ReactNode } from "react"
+import React, {Fragment, ReactElement, ReactNode, useEffect } from "react"
 
 
 import { Icon } from "../index"
@@ -10,7 +10,7 @@ import './modal.scss'
 import ReactDOM from "react-dom"
 
 interface dialogProps {
-  title: string,
+  title?: string,
   visible: Boolean,
   footer?: Array<ReactElement>,
   onClose: React.MouseEventHandler,
@@ -32,7 +32,7 @@ interface alertProps{
 const scopedClass = scopedClassMaker('assam-dialog')
 const sc = scopedClass
 
-const Dialog: React.FunctionComponent<dialogProps> = (props) => {
+const Modal: React.FunctionComponent<dialogProps> = (props) => {
 
   const { title,visible,children,footer,onClose,closeOnClickMask } = props
 
@@ -46,11 +46,30 @@ const Dialog: React.FunctionComponent<dialogProps> = (props) => {
     }
   }
 
-  const node =visible ?
+  const transitionShowStyle = {
+    transition: 'all 300ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s',
+    opacity: 1,
+    top: '30%',
+    transform: 'translateX(-25%) translateY(-25%) scale(1)'
+  }
+  const transitionHidenStyle = {
+    transition: 'all 300ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s',
+    opacity: 0,
+    top: '50%',
+    transform: 'translateX(-25%) translateY(-25%) scale(0)'
+  }
+
+  useEffect(()=>{
+    console.log('开始');
+    return ()=>{console.log('结束');}
+  },[])
+
+  const node =
+    visible ? 
     <Fragment>
-      <div className={sc('mask')} onClick={onClickMask}>
-      </div>
-      <div className={sc('')}>
+      {visible && <div className={sc('mask')} onClick={onClickMask}> </div>}
+      
+      <div className={sc('')} style={visible ? transitionShowStyle : transitionHidenStyle}>
         <div className={sc('close')} onClick={onClickClose}>
           <Icon name='Close'/>
         </div>
@@ -66,14 +85,15 @@ const Dialog: React.FunctionComponent<dialogProps> = (props) => {
           </footer>
         }
       </div>
-    </Fragment>:
-    null
+    </Fragment>
+    : null
   return (
     ReactDOM.createPortal(node, document.body)
+    
   )
 }
 
-const modal = (data:ModalProps) => {
+const opemModal = (data:ModalProps) => {
   const {content,footer,afterClose,title} = data
   const close = () => {
     ReactDOM.render(React.cloneElement(component,{visible:false}),div)
@@ -81,7 +101,7 @@ const modal = (data:ModalProps) => {
     div.remove()
   }
   const component = 
-    <Dialog
+    <Modal
       title={title!}
       visible={true}
       footer={footer}
@@ -90,7 +110,7 @@ const modal = (data:ModalProps) => {
         afterClose && afterClose()
       }}>
       {content}
-    </Dialog>
+    </Modal>
   const div = document.createElement('div')
   document.body.append(div)
   ReactDOM.render(component,div)
@@ -100,7 +120,7 @@ const modal = (data:ModalProps) => {
 const alert = (data:alertProps)=>{
   const {title,content} = data
   const footer = [<Button level="important" onClick={()=>{close()}}>知道了</Button>]
-  const close = modal({content,footer,title})
+  const close = opemModal({content,footer,title})
 }
 
 interface confirmProps{
@@ -124,13 +144,13 @@ const confirm = (data:confirmProps)=>{
      <Button level="important" onClick={onYes}>确认</Button>,
      <Button onClick={onNo}>取消</Button>
   ]
-  const close = modal({title,content,footer,afterClose:onOk})
+  const close = opemModal({title,content,footer,afterClose:onOk})
 }
 
 
-Dialog.defaultProps = {
+Modal.defaultProps = {
   closeOnClickMask : true
 }
 
-export {alert,confirm,modal}
-export default Dialog
+export {alert,confirm,opemModal}
+export default Modal

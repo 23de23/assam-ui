@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react"
 
-import Dialog from "./modal"
+import Modal from "./modal"
 import Button from "../button/button"
 
 const ModalExample1 = ()=>{
@@ -9,7 +9,7 @@ const ModalExample1 = ()=>{
   return (
     <div>
       <Button level="important" onClick={()=>{setIsModalVisible(!isModalVisible)}}>Open Modal</Button>
-      <Dialog 
+      <Modal 
         visible={isModalVisible}
         footer={[
           <Button onClick={()=>{setIsModalVisible(false)}}>取消</Button>,
@@ -21,7 +21,7 @@ const ModalExample1 = ()=>{
           <p>Some contents...</p>
           <p>Some contents...</p>
         </Fragment>
-      </Dialog>
+      </Modal>
     </div>
     
   )

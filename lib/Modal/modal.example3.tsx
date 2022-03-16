@@ -14,7 +14,7 @@ const ModalExample3 = ()=>{
 
   return (
       <div>
-        <Button onClick={handClick}>confirm</Button>
+        <Button level="important" onClick={handClick}>Confirm</Button>
       </div>
   )
 }
