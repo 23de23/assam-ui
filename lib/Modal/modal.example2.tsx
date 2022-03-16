@@ -7,10 +7,7 @@ import Button from "../button/button"
 const ModalExample2 = ()=>{
   return (
     <div>
-      <Button onClick={()=>{alert("这是一个alert测试")}} style={{"marginRight":20}}>Info</Button>
-      <Button onClick={()=>{alert("这是一个alert测试")}} style={{"marginRight":20}}>Sucecess</Button>
-      <Button onClick={()=>{alert("这是一个alert测试")}} style={{"marginRight":20}}>Error</Button>
-      <Button onClick={()=>{alert("这是一个alert测试")}}>Warning</Button>
+      <Button onClick={()=>{alert({title:'这是一则提示',content:"这是一个alert测试"})}} style={{"marginRight":20}}>Alert</Button>
     </div>
     
   )

@@ -7,9 +7,9 @@ const ModalExample1 = ()=>{
   const [Y, setY] = useState(false)
 
   const openModal = () => {
-    const close =  modal(<Fragment>
-        <div>12312312312313<button onClick={() => {close()}}>123</button></div>
-      </Fragment>)
+    const close =  modal({content:<Fragment>
+      <div>12312312312313<button onClick={() => {close()}}>123</button></div>
+    </Fragment>})
   }
   return (
     <div>

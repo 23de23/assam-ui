@@ -10,10 +10,21 @@ import './modal.scss'
 import ReactDOM from "react-dom"
 
 interface dialogProps {
+  title: string,
   visible: Boolean,
   footer?: Array<ReactElement>,
   onClose: React.MouseEventHandler,
   closeOnClickMask?: boolean
+}
+interface ModalProps{
+  title?: string,
+  content: ReactNode,
+  footer?: Array<React.ReactElement>,
+  afterClose?: ()=>void
+}
+interface alertProps{
+  title?: string,
+  content: string | React.ReactElement
 }
 
 
@@ -23,7 +34,7 @@ const sc = scopedClass
 
 const Dialog: React.FunctionComponent<dialogProps> = (props) => {
 
-  const { visible,children,footer,onClose,closeOnClickMask } = props
+  const { title,visible,children,footer,onClose,closeOnClickMask } = props
 
   const onClickClose: React.MouseEventHandler = (e)=>{
     console.log('mask点击关闭')
@@ -44,7 +55,7 @@ const Dialog: React.FunctionComponent<dialogProps> = (props) => {
           <Icon name='Close'/>
         </div>
         <header className={sc('header')}>
-          提示
+          {title ? title : '提示'}
         </header>
         <main className={sc('main')}>
           {children}
@@ -62,16 +73,18 @@ const Dialog: React.FunctionComponent<dialogProps> = (props) => {
   )
 }
 
-const modal = (content:ReactNode,footer?:Array<React.ReactElement>,afterClose?:()=>void) => {
+const modal = (data:ModalProps) => {
+  const {content,footer,afterClose,title} = data
   const close = () => {
     ReactDOM.render(React.cloneElement(component,{visible:false}),div)
     ReactDOM.unmountComponentAtNode(div)
     div.remove()
   }
   const component = 
-    <Dialog 
+    <Dialog
+      title={title!}
       visible={true}
-      footer={footer} 
+      footer={footer}
       onClose={()=>{
         close()
         afterClose && afterClose()
@@ -84,25 +97,34 @@ const modal = (content:ReactNode,footer?:Array<React.ReactElement>,afterClose?:(
   return close
 }
 
-const alert = (content:string)=>{
+const alert = (data:alertProps)=>{
+  const {title,content} = data
   const footer = [<Button level="important" onClick={()=>{close()}}>知道了</Button>]
-  const close = modal(content,footer)
+  const close = modal({content,footer,title})
 }
 
-const confirm = (content:string, yes?:() => void, no?:() => void)=>{
+interface confirmProps{
+  title?: string,
+  content: string | React.ReactElement,
+  onCancel: () => void,
+  onOk: () => void
+}
+
+const confirm = (data:confirmProps)=>{
+  const {title,content,onCancel,onOk} = data
   const onYes = () => {
     close()
-    yes && yes()
+    onOk && onOk()
   }
   const onNo = () => {
     close()
-    no && no()
+    onCancel && onCancel()
   }
   const  footer = [
-     <button onClick={onYes}>确认</button>,
-     <button onClick={onNo}>取消</button>
+     <Button level="important" onClick={onYes}>确认</Button>,
+     <Button onClick={onNo}>取消</Button>
   ]
-  const close = modal(content,footer,no)
+  const close = modal({title,content,footer,afterClose:onOk})
 }
 
 
