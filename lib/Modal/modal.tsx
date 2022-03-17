@@ -1,4 +1,4 @@
-import React, {Fragment, ReactElement, ReactNode, useEffect } from "react"
+import React, {Fragment, ReactElement, ReactNode, useEffect, useState } from "react"
 
 
 import { Icon } from "../index"
@@ -37,7 +37,6 @@ const Modal: React.FunctionComponent<dialogProps> = (props) => {
   const { title,visible,children,footer,onClose,closeOnClickMask } = props
 
   const onClickClose: React.MouseEventHandler = (e)=>{
-    console.log('mask点击关闭')
     onClose(e)
   }
   const onClickMask:React.MouseEventHandler = (e)=>{
@@ -59,17 +58,40 @@ const Modal: React.FunctionComponent<dialogProps> = (props) => {
     transform: 'translateX(-25%) translateY(-25%) scale(0)'
   }
 
+
+  const [_visible,_setVisible] = useState<Boolean>(false)
   useEffect(()=>{
-    console.log('开始');
-    return ()=>{console.log('结束');}
-  },[])
+    _setVisible(visible)
+    if(!visible){
+      setTimeout(()=>{
+        __setVisible(_visible)
+      },10000)
+    }else{
+      __setVisible(visible)
+    }
+  },[visible])
+
+
+  const [__visible,__setVisible] = useState<Boolean>(false)
+  useEffect(()=>{
+    _setVisible(visible)
+  },[__visible])
+  
+  function animationVisible(){
+    if(visible){
+      return true
+    }else if(!visible && !_visible && !__visible){    
+      return false
+    }
+      return true
+  }
 
   const node =
-    visible ? 
+  animationVisible() ? 
     <Fragment>
-      {visible && <div className={sc('mask')} onClick={onClickMask}> </div>}
+      {_visible && <div className={sc('mask')} onClick={onClickMask}> </div>}
       
-      <div className={sc('')} style={visible ? transitionShowStyle : transitionHidenStyle}>
+      <div className={sc('')} style={_visible ? transitionShowStyle : transitionHidenStyle}>
         <div className={sc('close')} onClick={onClickClose}>
           <Icon name='Close'/>
         </div>
@@ -97,8 +119,10 @@ const opemModal = (data:ModalProps) => {
   const {content,footer,afterClose,title} = data
   const close = () => {
     ReactDOM.render(React.cloneElement(component,{visible:false}),div)
-    ReactDOM.unmountComponentAtNode(div)
-    div.remove()
+    setTimeout(() => {
+        ReactDOM.unmountComponentAtNode(div)
+        div.remove()
+    }, 1000);
   }
   const component = 
     <Modal
