@@ -6,14 +6,17 @@ import './scroll.scss'
 import scrollbarWidth from "./scrollbar-width"
 
 interface Props extends React.HtmlHTMLAttributes<HTMLDivElement>{
-
+  trackClassName?: string,
+  trackStyle?: React.CSSProperties,
+  scroollBarClassName?: string,
+  scrollBarStyle?: React.CSSProperties
 }
 
 
 const sc = scopedClassMaker('assam-scroll')
 
 const Scroll = (props:Props) => {
-  const {children,className,...restProps}  = props
+  const {children,className,trackClassName,trackStyle,scroollBarClassName,scrollBarStyle,...restProps}  = props
 
 
   const containerRef = useRef<HTMLDivElement>(null)
@@ -100,9 +103,11 @@ const Scroll = (props:Props) => {
         {children}
       </div>
       {barVisible ? 
-      <div className={sc('track')}
+      <div className={sc('track',{extra:trackClassName})}
+           style={trackStyle}
            onMouseDown={barMouseDowm}>
-        <div style={{height:scrollBarHeight,transform:`translateY(${scrollBarTop}px)`}} className={sc('scrollBar')}></div>
+        <div style={{height:scrollBarHeight,transform:`translateY(${scrollBarTop}px)`,...scrollBarStyle}} 
+             className={sc('scrollBar',{extra:scroollBarClassName})}></div>
       </div> : null}
     </div>
   )
