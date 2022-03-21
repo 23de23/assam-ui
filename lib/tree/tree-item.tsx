@@ -1,6 +1,7 @@
-import React, { ChangeEventHandler, useRef, useState } from "react"
+import React, { ChangeEventHandler, useRef} from "react"
 import { scopedClassMaker } from '../helpers/classes'
 import useUpdate, { useToggle } from "../hooks"
+import Icon from "../icon/icon"
 const sc = scopedClassMaker('assam-tree')
 
 interface Props {
@@ -11,9 +12,9 @@ interface Props {
 }
 
 const TreeItem: React.FunctionComponent<Props> = (props) => {
-  const { treePops, treeItem, level } = props
+  const { treePops, treeItem, level} = props
   const inputRef = useRef<HTMLInputElement>(null)
-  const {value,expand,collapse} = useToggle(true)
+  const [value,expand,collapse] = useToggle(true)
   const childrenDiv = useRef<HTMLDivElement>(null)
   const transitionReady = useRef(true)
 
@@ -110,14 +111,19 @@ const TreeItem: React.FunctionComponent<Props> = (props) => {
 
   return <div key={treeItem.text} className={sc({ ['level-' + level]: true, item: true })}>
     <div className={sc('text')}>
+      <div className={sc('text-icon')}>
+        {treeItem.children ? value ? <Icon name='CaretDown' onClick={unfold}/> : <Icon name='CaretRight' onClick={fold}/>: ''}
+      </div>
       <label>
         <input type='checkBox'
           checked={checkedBoolean}
           onChange={fnOnChange}
+          disabled={treeItem.disabled}
           ref={inputRef} />
-        {treeItem.value}
+        <span>
+          {treeItem.value}
+        </span>
       </label>
-      {treeItem.children ? value ? <span onClick={unfold}>-</span> : <span onClick={fold}>+</span> : ''}
     </div>
     <div className={sc('unfold')} ref={childrenDiv}>
       {treeItem.children && treeItem.children.map(item =>
@@ -130,8 +136,8 @@ const TreeItem: React.FunctionComponent<Props> = (props) => {
 
   </div>
 }
-export default TreeItem
 
+export default TreeItem
 
 
 function treeChildrenValues (item: treeDataItem): string[]{

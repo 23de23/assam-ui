@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 
-const useUpdate = (dep:boolean,fn:()=> void) => {
+const useUpdate = (dep:Boolean,fn:()=> void) => {
   const count = useRef(false)
   useEffect(() => {
     if(count.current){

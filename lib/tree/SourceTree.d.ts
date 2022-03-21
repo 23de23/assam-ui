@@ -1,6 +1,7 @@
 interface treeDataItem{
     text:string,
     value:string,
+    disabled?: boolean,
     children?:treeDataItem[]
   }
   

@@ -1,15 +1,47 @@
 .assam-tree{
   &-text{
     padding: 0 6px;
+    margin-bottom: 4px;
     border-radius: 2px;
     user-select: none;
-    &:hover{
+    display: flex;
+    align-items: center;
+    &-icon{
+      cursor: pointer;
+      width: 24px;
+      line-height: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .assam-icon{
+        width: 10px;
+        height: 10px;
+      }
+    }
+    & label{
+      display: flex;
+      align-items: center;
+    }
+    & label span{
+      padding: 0 4px;
+    }
+    & label span:hover{
       background-color: #f5f5f5;
+    }
+    & label input{
+      margin-right: 6px;
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+    & label input:disabled{
+      cursor: not-allowed;
     }
   }
 
   &-item{
-    border: 1px solid red;
+    // border: 1px solid red;
     line-height: 1.5em;
   }
 
