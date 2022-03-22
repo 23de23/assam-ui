@@ -13,4 +13,49 @@
         border-color: $main-color;
         box-shadow: 0 0 0 2px fade_out($main-color, 0.5);
     }
+
+    &-wrapper{
+        display: inline-block;
+        position: relative;
+    }
+    &-large{
+        .assam-input{
+            padding: 8px 11px;
+        }
+    }
+    &-small{
+        .assam-input{
+            padding: 0 11px;
+        }
+    }
+    &-default{
+
+    }
+
+    &-iconLeft{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 30px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    &-iconLeft+&{
+        padding-left: 30px;
+    }
+    &-iconRight{
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        width: 30px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    &-suffix.assam-input{
+        padding-right: 30px;
+    }
 }
