@@ -13,9 +13,12 @@
         border-color: $main-color;
         box-shadow: 0 0 0 2px fade_out($main-color, 0.5);
     }
+    &:disabled{
+        cursor: not-allowed;
+    }
 
     &-wrapper{
-        display: inline-block;
+        display: inline-flex;
         position: relative;
     }
     &-large{
@@ -57,5 +60,31 @@
     }
     &-suffix.assam-input{
         padding-right: 30px;
+    }
+
+    &-addon{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #ddd;
+        padding: 0 10px;
+        background-color: #fafafa;
+    }
+    &-addon:first-child{
+        border-right: unset;
+        border-radius: 4px 0 0 4px;
+    }
+    &-addon:last-child{
+        border-left: unset;
+        border-radius: 0 4px 4px 0;
+    }
+    &.assam-input-addonBefore{
+        border-radius: 0px 4px 4px 0;
+    }
+    &.assam-input-addonAfter{
+        border-radius: 4px 0 0 4px;
+    }
+    &.assam-input-addonBefore.assam-input-addonAfter{
+        border-radius: 0 0 0 0;
     }
 }

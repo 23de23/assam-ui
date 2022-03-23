@@ -12,9 +12,9 @@ const sc = scopedClassMaker('example-icon')
     const handlClick = (name:string)=>{
         return (
             ()=>{
-                copyToClip(`<icon name={${name}}/>  copied`)
+                copyToClip(`<Icon name={${name}}/>`)
                 message.success({
-                    content:`<icon name={${name}}/>  copied`
+                    content:`<Icon name={${name}}/>  copied`
                 })
             }
         )
