@@ -33,7 +33,6 @@ const Position:React.FunctionComponent<Props> = (props)=>{
     const obj = getPositiong(targetHtml,positionHtml,placement)
     setStyle(obj)
     
-    
     return ()=>{
       setStyle({...style,opacity:0})
       div.remove()
@@ -74,21 +73,25 @@ function getPositiong (targetHtml: HTMLElement ,positionHtml: HTMLElement,placem
     left:0,
     top:0,
   }
-  
+
+  let { width, height, top, left } = targetHtml.getBoundingClientRect()
+  let { width:width2, height:height2 } = positionHtml.getBoundingClientRect()
+
   if(placement == 'top'){
-    obj.top = targetHtml.offsetTop - positionHtml.offsetHeight
-    obj.left = targetHtml.offsetLeft + targetHtml.offsetWidth/2
+    obj.top = top - height2 + window.pageYOffset
+    obj.left = left  + width/2 + window.pageXOffset
   }else if(placement == 'left'){
-    obj.top = targetHtml.offsetTop + targetHtml.offsetHeight/2
-    obj.left = targetHtml.offsetLeft - positionHtml.offsetWidth
+    obj.top = top + height/2 + window.pageYOffset
+    obj.left = left - width2 + window.pageXOffset
   }else if(placement == 'right'){
-    obj.top = targetHtml.offsetTop + targetHtml.offsetHeight/2
-    obj.left = targetHtml.offsetLeft + targetHtml.offsetWidth
+    obj.top = top + height/2 + window.pageYOffset
+    obj.left = left + width + window.pageXOffset
   }else if(placement == 'bottom'){
-    obj.top = targetHtml.offsetTop + targetHtml.offsetHeight
-    obj.left = targetHtml.offsetLeft + targetHtml.offsetWidth/2
+    obj.top = top + height + window.pageYOffset
+    obj.left = left + width/2 + window.pageXOffset
   }
 
+  console.log(obj);
   
   return obj
 }

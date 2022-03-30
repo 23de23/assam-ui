@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from 'react'
 
 import Icon from "../icon/icon"
-import CodeVisible from './/codeVIsible'
+import CodeVisible from './codeVIsible'
 import Tooltip from '../tooltip/tooltip'
 
 

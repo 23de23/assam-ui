@@ -65,7 +65,7 @@ ReactDOM.render((
                         </li>
                     </ul>
                     <ul>
-                        <div className='assam-menu-item-title'>数据录入</div>
+                        <div className='assam-menu-item-title'>数据展示</div>
                         <li>
                             <NavLink to='/dialog'>Modal 对话框</NavLink>
                         </li>
@@ -83,7 +83,7 @@ ReactDOM.render((
                         </li>
                     </ul>
                     <ul>
-                        <div className='assam-menu-item-title'>数据展示</div>
+                        <div className='assam-menu-item-title'>数据录入</div>
                         <li>
                             <NavLink to='/input'>Input 输入框</NavLink>
                         </li>
@@ -99,7 +99,6 @@ ReactDOM.render((
                     </ul>
                 </Sider>
                 <Content className='global-content'>
-                    <Redirect path="/" to="/icon" />
 					<Route path="/introduce" component={Introduce}/>
 					<Route path="/startUsing" component={StartUsing}/>
 					<Route path="/colorMatching" component={ColorMatching}/>
@@ -115,6 +114,10 @@ ReactDOM.render((
 					<Route path="/message" component={MessageExample}/>
 					<Route path="/tooltip" component={TooltipExample}/>
 					<Route path="/popver" component={PopverExample}/>
+                    <Route component={Introduce}/>
+
+
+
                 </Content>
             </Layout>
             <Footer className='global-footer'>
