@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {HashRouter as Router,NavLink,Route} from 'react-router-dom'
+import {HashRouter as Router,NavLink,Redirect,Route} from 'react-router-dom'
 
 import Introduce from './lib/page.example/introduce'
 import StartUsing from "./lib/page.example/startUsing"
@@ -37,7 +37,7 @@ ReactDOM.render((
                 <Sider className='global-sider'>
                     <ul>
                         <li>
-                            <NavLink to='/introduce'>介绍</NavLink>
+                            <NavLink to='/introduce'>Assam</NavLink>
                         </li>
                         <li>
                             <NavLink to='/startUsing'>开始使用</NavLink>
@@ -49,31 +49,25 @@ ReactDOM.render((
                             <NavLink to='/zIndex'>层级规范</NavLink>
                         </li>
                     </ul>
-                    <h2>组件</h2>
                     <ul>
+                        <div className='assam-menu-item-title'>通用</div>
                         <li>
                             <NavLink to='/icon'>Icon 图标</NavLink>
                         </li>
                         <li>
                             <NavLink to='/button'>Button 按钮</NavLink>
                         </li>
-                        <li>
-                            <NavLink to='/input'>Input 输入框</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to='/dialog'>Modal 对话框</NavLink>
-                        </li>
+                    </ul>
+                    <ul>
+                        <div className='assam-menu-item-title'>布局</div>
                         <li>
                             <NavLink to='/layout'>Layout 布局</NavLink>
                         </li>
+                    </ul>
+                    <ul>
+                        <div className='assam-menu-item-title'>数据录入</div>
                         <li>
-                            <NavLink to='/form'>Form 表单</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to='/scroll'>Croll 滚动</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to='/tree'>Tree 树形控件</NavLink>
+                            <NavLink to='/dialog'>Modal 对话框</NavLink>
                         </li>
                         <li>
                             <NavLink to='/message'>Message 全局提示</NavLink>
@@ -84,9 +78,28 @@ ReactDOM.render((
                         <li>
                             <NavLink to='/popver'>Popver 气泡卡片</NavLink>
                         </li>
+                        <li>
+                            <NavLink to='/tree'>Tree 树形控件</NavLink>
+                        </li>
+                    </ul>
+                    <ul>
+                        <div className='assam-menu-item-title'>数据展示</div>
+                        <li>
+                            <NavLink to='/input'>Input 输入框</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to='/form'>Form 表单</NavLink>
+                        </li>
+                    </ul>
+                    <ul>
+                        <div className='assam-menu-item-title'>其他</div>
+                        <li>
+                            <NavLink to='/scroll'>Scroll 滚动</NavLink>
+                        </li>
                     </ul>
                 </Sider>
                 <Content className='global-content'>
+                    <Redirect path="/" to="/icon" />
 					<Route path="/introduce" component={Introduce}/>
 					<Route path="/startUsing" component={StartUsing}/>
 					<Route path="/colorMatching" component={ColorMatching}/>

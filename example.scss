@@ -101,7 +101,7 @@ body {
                 }
                 color: #333;
                 display: block;
-                padding: 11px 16px 11px 40px;
+                padding: 11px 16px 11px 50px;
                 &:hover{
                     color: $main-color;
                 }
@@ -119,12 +119,17 @@ body {
         }
     }
 }
+.assam-menu-item-title{
+    width: 275px;
+    padding: 11px 16px 11px 30px;
+    // border-bottom: 1px solid;
+    margin: 16px 0;
+    color: #00000073;
+}
 .global-content{
-    padding-left: 64px;
+    padding-left: 16px;
     padding-bottom: 32px;
-    padding-right: 32px;
-    border: 1px solid red;
-
+    padding-right: 16px;
     margin: 0 auto;
     // padding-bottom: 0;
     max-width: 1000px;

@@ -12,4 +12,8 @@ module.exports =Object.assign({},base,{
           template: 'example.html'
       })
   ],
+  devServer: {//设置开发者工具的端口号,不设置则默认为8080端口
+    port:8888,
+    host:'0.0.0.0'
+}
 }) 
